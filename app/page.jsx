@@ -46,15 +46,16 @@ export default function Home() {
       ...prevCart,
       { id: product.id, title: product.title, price: product.price },
     ]);
-  };
-
-  useEffect(() => {
     console.log(cartProducts);
-  }, [cartProducts]);
+  };
 
   return (
     <>
-      <Header clickSearch={handleSearchBar} searchActive={searchBarActive} />
+      <Header 
+        clickSearch={handleSearchBar} 
+        searchActive={searchBarActive} 
+        cartLenght={cartProducts.length}
+      />
       <SearchBar
         searchActive={searchBarActive}
         searchProduct={searchProduct}
