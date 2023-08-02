@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Rating from "./Rating";
 
-export default function ProductInfo() {
+export default function ProductInfo({handleCartProduct}) {
   const params = useParams();
   const product = JSON.parse(decodeURIComponent(params.product));
   const navigate = useNavigate();
@@ -29,12 +29,15 @@ export default function ProductInfo() {
       <div className="bg-white p-10 rounded-md mb-4">
         <img className="" src={product.image} alt="" />
       </div>
-      <div className="mb-10">
+      <div className="mb-6">
         <h1 className="text-lg text-gray-900 font-semibold uppercase mb-2">
           {product.title}
         </h1>
         <p className="text-base text-gray-700 mb-4">R$ {price}</p>
         <p className="text-xs text-gray-500">{product.description}</p>
+      </div>
+      <div className="w-full">
+        <button onClick={() => handleCartProduct(product)} className="bg-red-500 p-4 mb-10 w-full hover:bg-red-600">COMPRAR</button>
       </div>
       <div className="flex flex-col items-center text-gray-900">
         <p className="text-6xl font-medium">

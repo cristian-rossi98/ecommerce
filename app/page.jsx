@@ -15,6 +15,7 @@ export default function Home() {
   const [searchBarActive, setSearchBarActive] = useState(false);
   const [searchProduct, setSearchProduct] = useState("");
   const [orderProduct, setOrderProduct] = useState("0");
+  const [cartProducts, setCartProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -33,13 +34,23 @@ export default function Home() {
     return <p>Carregando...</p>;
   }
 
-  if (searchBarActive) {
-    setSearchProduct("");
-  }
-
   const handleSearchBar = () => {
     setSearchBarActive(!searchBarActive);
+    if (searchBarActive) {
+      setSearchProduct("");
+    }
   };
+
+  const handleCartProduct = (product) => {
+    setCartProducts((prevCart) => [
+      ...prevCart,
+      { id: product.id, title: product.title, price: product.price },
+    ]);
+  };
+
+  useEffect(() => {
+    console.log(cartProducts);
+  }, [cartProducts]);
 
   return (
     <>
@@ -74,7 +85,7 @@ export default function Home() {
               exact
               element={
                 <>
-                  <ProductInfo />
+                  <ProductInfo handleCartProduct={handleCartProduct} />
                 </>
               }
             />

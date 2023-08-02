@@ -32,7 +32,7 @@ export default function Products({ products, searchProduct, orderProduct }) {
   return (
     <>
       {sortedProducts.length ? (
-        <ul className="p-6 flex justify-around flex-wrap">
+        <ul className="p-6 flex justify-evenly flex-wrap">
           {sortedProducts.map((product) => (
             <Product key={product.id} product={product} />
           ))}

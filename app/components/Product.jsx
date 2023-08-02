@@ -18,7 +18,7 @@ export default function Product({ product }) {
   return (
     <li
       onClick={handleProductInfo}
-      className="flex flex-col items-center w-2/5 sm:w-80 p-4 mb-6 bg-white rounded-md hover:cursor-pointer transition duration-200 ease-in-out hover:scale-105 shadow-lg hover:shadow-xl"
+      className="flex flex-col items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-72"
     >
       <div className="h-44 flex justify-center items-center">
         <img className="product-image" src={product.image} alt="" />
