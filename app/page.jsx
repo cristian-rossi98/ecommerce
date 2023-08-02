@@ -10,6 +10,8 @@ import ProductInfo from "./components/ProductInfo";
 import SearchBar from "./components/SearchBar";
 import Order from "./components/Order";
 import Cart from "./components/Cart";
+import Filter from "./components/Filter";
+import Skeleton from "./components/Skeleton";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -33,7 +35,8 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <p className="text-black">Carregando dados...</p>;
+    // return <p className="text-black">Carregando dados...</p>;
+    return <Skeleton />;
   }
 
   const handleSearchBar = () => {
@@ -160,11 +163,14 @@ export default function Home() {
                   orderProduct={orderProduct}
                   onOrderProductChange={setOrderProduct}
                 />
-                <Products
-                  products={data}
-                  searchProduct={searchProduct}
-                  orderProduct={orderProduct}
-                />
+                {/* <div className="flex flex-row"> */}
+                  {/* <Filter /> */}
+                  <Products
+                    products={data}
+                    searchProduct={searchProduct}
+                    orderProduct={orderProduct}
+                  />
+                {/* </div> */}
               </main>
             }
           ></Route>

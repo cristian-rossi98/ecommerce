@@ -32,18 +32,20 @@ export default function Products({ products, searchProduct, orderProduct }) {
   return (
     <>
       {sortedProducts.length ? (
-        <ul className="p-6 flex justify-evenly flex-wrap">
-          {sortedProducts.map((product) => (
-            <Product
-              key={product.id}
-              product={product}
-              classStyle={
-                "flex flex-col items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-72"
-              }
-              cartPage={false}
-            />
-          ))}
-        </ul>
+        <div className="w-full flex justify-center">
+          <ul className="p-6 flex justify-center flex-wrap">
+            {sortedProducts.map((product) => (
+              <Product
+                key={product.id}
+                product={product}
+                classStyle={
+                  "flex flex-col items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-72"
+                }
+                cartPage={false}
+              />
+            ))}
+          </ul>
+        </div>
       ) : (
         <div className="h-screen flex justify-center items-center">
           <p className="text-gray-700 text-2xl text-center">

@@ -5,7 +5,6 @@ export default function Order({ orderProduct, onOrderProductChange }) {
         className="shadow-md"
         value={orderProduct}
         onChange={(e) => onOrderProductChange(e.target.value)}
-        // defaultValue="0"
       >
         <option value="0">Ordenar por:</option>
         <option value="1">Nome A-Z</option>

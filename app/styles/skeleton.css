@@ -1,0 +1,46 @@
+/* styles/Skeleton.css */
+.skeleton {
+  /* display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px; */
+  animation: skeletonAnimation 1.5s infinite;
+}
+
+.skeleton__thumbnail {
+  width: 120px;
+  height: 90px;
+  background-color: #ddd;
+  /* margin-right: 16px; */
+}
+
+.skeleton__info {
+  flex: 1;
+}
+
+.skeleton__title {
+  width: 60%;
+  height: 16px;
+  background-color: #ddd;
+  margin-bottom: 8px;
+}
+
+.skeleton__description {
+  width: 80%;
+  height: 12px;
+  background-color: #ddd;
+}
+
+@keyframes skeletonAnimation {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
