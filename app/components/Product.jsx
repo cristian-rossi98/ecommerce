@@ -23,8 +23,6 @@ export default function Product({
 
   return (
     <li
-      
-      // className="flex  items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-72"
       className={classStyle}
     >
       <div className="h-44 w-52 flex justify-center items-center mx-8">
@@ -38,10 +36,10 @@ export default function Product({
         {cartPage && (
           <button
             onClick={() => handleRemoveCartProduct(product.id)}
-            className="text-sm font-medium bg-red-500 w-2/5 flex justify-evenly items-center p-1 rounded-sm hover:bg-red-600"
+            className="text-sm font-medium bg-red-500 w-3/5 flex justify-center items-center p-1 rounded-sm hover:bg-red-600 md:w-2/5"
           >
             <FaTimes />
-            Remover
+            <span className="ml-2">Remover</span>
           </button>
         )}
       </div>

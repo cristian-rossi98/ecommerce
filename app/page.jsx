@@ -118,7 +118,7 @@ export default function Home() {
             path="/"
             exact
             element={
-              <main>
+              <main className="m-auto lg:w-4/5">
                 <SearchBar
                   searchActive={searchBarActive}
                   searchProduct={searchProduct}
@@ -140,7 +140,7 @@ export default function Home() {
             path="/product/:product"
             exact
             element={
-              <main>
+              <main className="m-auto sm:w-4/5 lg:w-3/5">
                 <ProductInfo handleCartProduct={handleCartProduct} />
               </main>
             }
@@ -149,7 +149,7 @@ export default function Home() {
             path="/cart/:product"
             exact
             element={
-              <main>
+              <main className="m-auto sm:w-4/5 lg:w-3/5">
                 <Cart 
                   handleRemoveCartProduct={handleRemoveCartProduct} 
                   cartProducts={cartProducts}

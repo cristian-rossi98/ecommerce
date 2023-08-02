@@ -41,3 +41,10 @@ select {
   padding: 5px;
   width: 170px;
 }
+
+/* @media (min-width: 768px) {
+  main {
+    margin: auto;
+    width: 80%;
+  }
+} */
