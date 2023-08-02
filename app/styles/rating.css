@@ -1,0 +1,18 @@
+.rating {
+  display: flex;
+  gap: 2px; /* Espaçamento entre as estrelas */
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  fill: #ffc107; /* Cor das estrelas preenchidas */
+}
+
+.empty {
+  fill: #d4d4d6; /* Cor das estrelas vazias */
+}
+
+.half-filled {
+  fill: #ffc107; /* Cor das estrelas preenchidas pela metade */
+}

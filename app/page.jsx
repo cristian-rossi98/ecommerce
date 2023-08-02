@@ -7,12 +7,14 @@ import Footer from "./components/Footer";
 import Products from "./components/Products";
 import ProductInfo from "./components/ProductInfo";
 import SearchBar from "./components/SearchBar";
+import Filter from "./components/Order";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState(false);
-  const [back, setBack] = useState(false);
+  const [searchBarActive, setSearchBarActive] = useState(false);
+  const [searchProduct, setSearchProduct] = useState("");
+  const [orderProduct, setOrderProduct] = useState("0");
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
@@ -31,15 +33,26 @@ export default function Home() {
     return <p>Carregando...</p>;
   }
 
-  const handleSearchBar = () => {
-    setSearch(!search);
+  if (searchBarActive) {
+    setSearchProduct("");
   }
+
+  const handleSearchBar = () => {
+    setSearchBarActive(!searchBarActive);
+  };
 
   return (
     <>
-      {console.log(data)}
-      <Header clickSearch={handleSearchBar} searchActive={search} />
-      <SearchBar searchActive={search} />
+      <Header clickSearch={handleSearchBar} searchActive={searchBarActive} />
+      <SearchBar
+        searchActive={searchBarActive}
+        searchProduct={searchProduct}
+        onSearchProductChange={setSearchProduct}
+      />
+      <Filter
+        orderProduct={orderProduct}
+        onOrderProductChange={setOrderProduct}
+      />
       <main>
         <Router>
           <Routes>
@@ -48,7 +61,11 @@ export default function Home() {
               exact
               element={
                 <>
-                  <Products products={data} />
+                  <Products
+                    products={data}
+                    searchProduct={searchProduct}
+                    orderProduct={orderProduct}
+                  />
                 </>
               }
             ></Route>

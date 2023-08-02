@@ -5,7 +5,7 @@ import "../styles/header.css";
 
 export default function Header({ clickSearch, searchActive }) {
   return (
-    <header className="flex justify-between items-center p-10 bg-red-500 text-3xl">
+    <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md">
       <button onClick={clickSearch}>
         {searchActive ? <FaTimes /> : <BiSearchAlt2 />}
       </button>

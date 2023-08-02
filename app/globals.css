@@ -30,3 +30,14 @@ body {
   background-color: rgb(235, 235, 235);
   color: white;
 }
+
+main {
+  min-height: 90vh;
+}
+
+select {
+  background-color: #ef4444;
+  border-radius: 2px;
+  padding: 5px;
+  width: 170px;
+}

@@ -1,6 +1,8 @@
 import "../styles/productInfo.css";
 import { useNavigate, useParams } from "react-router-dom";
 
+import Rating from "./Rating";
+
 export default function ProductInfo() {
   const params = useParams();
   const product = JSON.parse(decodeURIComponent(params.product));
@@ -35,8 +37,14 @@ export default function ProductInfo() {
         <p className="text-xs text-gray-500">{product.description}</p>
       </div>
       <div className="flex flex-col items-center text-gray-900">
-        <p className="text-6xl font-medium">{product.rating.rate}<span className="text-3xl">/5</span></p>
-        <p className="text-xs font-medium text-gray-500">Baseado em {product.rating.count} avaliações</p>
+        <p className="text-6xl font-medium">
+          {product.rating.rate}
+          <span className="text-3xl">/5</span>
+        </p>
+        <Rating value={product.rating.rate} />
+        <p className="text-xs font-medium text-gray-500">
+          Baseado em {product.rating.count} avaliações
+        </p>
       </div>
     </section>
   );
