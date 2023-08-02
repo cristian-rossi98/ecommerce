@@ -3,17 +3,14 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Rating from "./Rating";
 import BackButton from "./BackButton";
+import calculatePrice from "./CalculatePrice";
 
 export default function ProductInfo({ handleCartProduct }) {
   const params = useParams();
   const product = JSON.parse(decodeURIComponent(params.product));
   const navigate = useNavigate();
 
-  let price = product.price * 5;
-  price = price.toLocaleString("pt-BR", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
+  let price = calculatePrice(product.price);
 
   return (
     <section className="p-6">

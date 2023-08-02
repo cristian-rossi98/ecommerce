@@ -45,20 +45,33 @@ export default function Home() {
 
   const handleCartProduct = (product) => {
     try {
-      setCartProducts((prevCart) => [
-        ...prevCart,
-        {
-          id: product.id,
-          title: product.title,
-          description: product.description,
-          price: product.price,
-          image: product.image,
-          rating: {
-            rate: product.rating.rate,
-            count: product.rating.count,
-          },
-        },
-      ]);
+      const existingProduct = cartProducts.find(
+        (item) => item.id === product.id
+      );
+
+      existingProduct
+        ? setCartProducts((prevCart) =>
+            prevCart.map((item) =>
+              item.id === product.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
+            )
+          )
+        : setCartProducts((prevCart) => [
+            ...prevCart,
+            {
+              id: product.id,
+              title: product.title,
+              description: product.description,
+              price: product.price,
+              image: product.image,
+              quantity: 1,
+              rating: {
+                rate: product.rating.rate,
+                count: product.rating.count,
+              },
+            },
+          ]);
       toastSuccess("Produto adicionado ao carrinho");
     } catch (error) {
       toastError("Erro ao adicionar produto ao carrinho");
@@ -67,12 +80,31 @@ export default function Home() {
 
   const handleRemoveCartProduct = (productId) => {
     try {
-      const updatedCart = cartProducts.filter((productCart) => productCart.id !== productId);
+      const updatedCart = cartProducts.filter(
+        (productCart) => productCart.id !== productId
+      );
       setCartProducts(updatedCart);
       toastSuccess("Produto removido do carrinho");
     } catch (error) {
       toastError("Erro ao remover produto do carrinho");
     }
+  };
+
+  const handleSubCartProduct = (product) => {
+    product.quantity === 1 && handleRemoveCartProduct(product.id);
+    setCartProducts((prevCart) =>
+      prevCart.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+      )
+    );
+  };
+
+  const handleSumCartProduct = (product) => {
+    setCartProducts((prevCart) =>
+      prevCart.map((item) =>
+        item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
   };
 
   const toastSuccess = (msg) => {
@@ -113,17 +145,17 @@ export default function Home() {
           cartLenght={cartProducts.length}
           cartProducts={cartProducts}
         />
+        <SearchBar
+          searchActive={searchBarActive}
+          searchProduct={searchProduct}
+          onSearchProductChange={setSearchProduct}
+        />
         <Routes>
           <Route
             path="/"
             exact
             element={
               <main className="m-auto lg:w-4/5">
-                <SearchBar
-                  searchActive={searchBarActive}
-                  searchProduct={searchProduct}
-                  onSearchProductChange={setSearchProduct}
-                />
                 <Order
                   orderProduct={orderProduct}
                   onOrderProductChange={setOrderProduct}
@@ -150,9 +182,11 @@ export default function Home() {
             exact
             element={
               <main className="m-auto sm:w-4/5 lg:w-3/5">
-                <Cart 
-                  handleRemoveCartProduct={handleRemoveCartProduct} 
+                <Cart
+                  handleRemoveCartProduct={handleRemoveCartProduct}
                   cartProducts={cartProducts}
+                  handleSubCartProduct={handleSubCartProduct}
+                  handleSumCartProduct={handleSumCartProduct}
                 />
               </main>
             }

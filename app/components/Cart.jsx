@@ -1,14 +1,29 @@
 import { useParams } from "react-router-dom";
 import Product from "./Product";
 import BackButton from "./BackButton";
+import calculatePrice from "./CalculatePrice";
 
-export default function Cart({ handleRemoveCartProduct, cartProducts }) {
-  // const params = useParams();
-  // const products = JSON.parse(decodeURIComponent(params.product));
+export default function Cart({
+  handleRemoveCartProduct,
+  cartProducts,
+  handleSubCartProduct,
+  handleSumCartProduct
+}) {
+  const totalPrice = cartProducts.reduce((accumulator, product) => {
+    return accumulator + product.price * product.quantity;
+  }, 0);
+  const formatedPrice = calculatePrice(totalPrice);
 
   return (
     <section className="p-6 m-auto ">
-      <BackButton />
+      <div className="flex justify-between items-start">
+        <BackButton />
+        {totalPrice > 0 && (
+          <h1 className="text-black font-semibold text-2xl">
+            Total R$ {formatedPrice}
+          </h1>
+        )}
+      </div>
       {cartProducts.length ? (
         <ul className="w-full flex flex-col justify-evenly items-center">
           {cartProducts.map((product) => (
@@ -20,6 +35,8 @@ export default function Cart({ handleRemoveCartProduct, cartProducts }) {
               }
               cartPage={true}
               handleRemoveCartProduct={handleRemoveCartProduct}
+              handleSubCartProduct={handleSubCartProduct}
+              handleSumCartProduct={handleSumCartProduct}
             />
           ))}
         </ul>
