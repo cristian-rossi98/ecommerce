@@ -8,21 +8,21 @@ export default function Products({ products, searchProduct, orderProduct }) {
   let sortedProducts = filteredProducts;
 
   switch (orderProduct) {
-    case '1':
+    case "1":
       sortedProducts = [...filteredProducts].sort((a, b) => {
         return a.title.localeCompare(b.title);
       });
       break;
-    case '2':
+    case "2":
       sortedProducts = [...filteredProducts].sort((a, b) => {
         return b.title.localeCompare(a.title);
       });
       break;
-    case '3':
-      sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price );
+    case "3":
+      sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
       break;
-    case '4':
-      sortedProducts = [...filteredProducts].sort((a, b) => b.price - a.price );
+    case "4":
+      sortedProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
       break;
     default:
       break;
@@ -34,12 +34,21 @@ export default function Products({ products, searchProduct, orderProduct }) {
       {sortedProducts.length ? (
         <ul className="p-6 flex justify-evenly flex-wrap">
           {sortedProducts.map((product) => (
-            <Product key={product.id} product={product} />
+            <Product
+              key={product.id}
+              product={product}
+              classStyle={
+                "flex flex-col items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-72"
+              }
+              cartPage={false}
+            />
           ))}
         </ul>
       ) : (
         <div className="h-screen flex justify-center items-center">
-          <p className="text-gray-700 text-2xl text-center">Nenhum resultado encontrado</p>
+          <p className="text-gray-700 text-2xl text-center">
+            Nenhum resultado encontrado
+          </p>
         </div>
       )}
     </>

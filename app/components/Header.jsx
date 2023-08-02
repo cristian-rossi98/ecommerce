@@ -3,8 +3,21 @@ import { FaTimes } from "react-icons/fa";
 import Badge from "@mui/material/Badge";
 
 import "../styles/header.css";
+import { useNavigate } from "react-router-dom";
 
-export default function Header({ clickSearch, searchActive, cartLenght }) {
+export default function Header({
+  clickSearch,
+  searchActive,
+  cartLenght,
+  cartProducts,
+}) {
+  const navigates = useNavigate();
+
+  const handleCartNavigate = () => {
+    const cartString = JSON.stringify(cartProducts);
+    navigates(`/cart/${encodeURIComponent(cartString)}`);
+  };
+
   return (
     <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md">
       <button onClick={clickSearch}>
@@ -13,9 +26,11 @@ export default function Header({ clickSearch, searchActive, cartLenght }) {
       <a href="/">
         <h1 className="main-logo contents">Ecommerce</h1>
       </a>
-      <Badge badgeContent={cartLenght} color="primary">
-        <BiShoppingBag />
-      </Badge>
+      <button onClick={handleCartNavigate}>
+        <Badge badgeContent={cartLenght} color="primary">
+          <BiShoppingBag />
+        </Badge>
+      </button>
     </header>
   );
 }

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Rating from "./Rating";
 
-export default function ProductInfo({handleCartProduct}) {
+export default function ProductInfo({ handleCartProduct }) {
   const params = useParams();
   const product = JSON.parse(decodeURIComponent(params.product));
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ export default function ProductInfo({handleCartProduct}) {
   });
 
   function handleBack() {
-    navigate(-1);
+    navigate('/');
   }
 
   return (
@@ -37,7 +37,12 @@ export default function ProductInfo({handleCartProduct}) {
         <p className="text-xs text-gray-500">{product.description}</p>
       </div>
       <div className="w-full">
-        <button onClick={() => handleCartProduct(product)} className="bg-red-500 p-4 mb-10 w-full hover:bg-red-600">COMPRAR</button>
+        <button
+          onClick={() => handleCartProduct(product)}
+          className="bg-red-500 p-4 mb-10 w-full hover:bg-red-600"
+        >
+          COMPRAR
+        </button>
       </div>
       <div className="flex flex-col items-center text-gray-900">
         <p className="text-6xl font-medium">
