@@ -10,7 +10,7 @@ export default function BackButton() {
   return (
     <>
       <button
-        className="mb-4 bg-red-500 p-2 px-6 text-sm font-semibold rounded-sm hover:bg-red-600"
+        className="mb-4 bg-red-500 p-2 px-6 text-sm font-semibold rounded-sm shadow-md hover:bg-red-600"
         onClick={handleBack}
       >
         VOLTAR

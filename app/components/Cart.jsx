@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Product from "./Product";
 import BackButton from "./BackButton";
-import calculatePrice from "./CalculatePrice";
+import calculatePrice from "./calculatePrice";
 
 export default function Cart({
   handleRemoveCartProduct,
@@ -15,11 +15,11 @@ export default function Cart({
   const formatedPrice = calculatePrice(totalPrice);
 
   return (
-    <section className="p-6 m-auto ">
+    <section className="px-2 py-6 m-auto ">
       <div className="flex justify-between items-start">
         <BackButton />
         {totalPrice > 0 && (
-          <h1 className="text-black font-semibold text-2xl">
+          <h1 className="text-black font-semibold text-xl lg:text-2xl">
             Total R$ {formatedPrice}
           </h1>
         )}
@@ -31,7 +31,7 @@ export default function Cart({
               key={product.id}
               product={product}
               classStyle={
-                "flex w-full items-center w-5/12 px-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg"
+                "flex w-full items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg"
               }
               cartPage={true}
               handleRemoveCartProduct={handleRemoveCartProduct}

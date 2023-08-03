@@ -33,13 +33,13 @@ export default function Products({ products, searchProduct, orderProduct }) {
     <>
       {sortedProducts.length ? (
         <div className="w-full flex justify-center">
-          <ul className="p-6 flex justify-center flex-wrap">
+          <ul className="px-2 py-6 flex justify-center flex-wrap">
             {sortedProducts.map((product) => (
               <Product
                 key={product.id}
                 product={product}
                 classStyle={
-                  "flex flex-col items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-72"
+                  "flex flex-col items-center w-5/12 p-4 m-2 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg hover:scale-105 hover:shadow-xl sm:w-60"
                 }
                 cartPage={false}
               />

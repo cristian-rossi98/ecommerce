@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import "../styles/product.css";
-import calculatePrice from "./CalculatePrice";
+import calculatePrice from "./calculatePrice";
 
 export default function Product({
   product,
@@ -30,7 +30,7 @@ export default function Product({
           alt=""
         />
       </div>
-      <div className="h-32 w-full flex flex-col justify-between pt-4">
+      <div className="w-full flex flex-col justify-between">
         <h1
           onClick={handleProductInfo}
           className="hover:underline text-xs font-semibold text-black mb-2"
@@ -40,14 +40,14 @@ export default function Product({
         <p className="text-sm font-light text-black">R$ {price}</p>
         {cartPage && (
           <>
-            <div className="text-black flex flex-row justify-between w-20 border-solid border-2 border-gray-300 rounded-sm">
+            <div className="text-black flex flex-row justify-between w-20 border-solid border-2 border-gray-300 rounded-sm my-2">
               <button onClick={() => handleSubCartProduct(product)} className="w-1/3 font-extrabold flex items-center justify-center bg-gray-300 h-6 hover:bg-gray-400">-</button>
               <p className="w-1/3 h-6 flex items-center justify-center">{product.quantity}</p>
               <button onClick={() => handleSumCartProduct(product)} className="w-1/3 font-medium flex items-center justify-center bg-gray-300 h-6 hover:bg-gray-400">+</button>
             </div>
             <button
               onClick={() => handleRemoveCartProduct(product.id)}
-              className="text-sm font-medium bg-red-500 w-3/5 flex justify-center items-center p-1 rounded-sm hover:bg-red-600 md:w-2/5"
+              className="text-sm font-medium bg-red-500 w-4/5 flex justify-center items-center p-1 rounded-sm hover:bg-red-600 md:w-2/5"
             >
               <FaTimes />
               <span className="ml-2">Remover</span>

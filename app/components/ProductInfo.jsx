@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import Rating from "./Rating";
 import BackButton from "./BackButton";
-import calculatePrice from "./CalculatePrice";
+import calculatePrice from "./calculatePrice";
 
 export default function ProductInfo({ handleCartProduct }) {
   const params = useParams();
@@ -13,7 +13,7 @@ export default function ProductInfo({ handleCartProduct }) {
   let price = calculatePrice(product.price);
 
   return (
-    <section className="p-6">
+    <section className="px-2 py-6">
       <BackButton />
       <section className="md:flex">
         <div className="bg-white text-center p-10 rounded-md mb-4 md:w-2/4 md:mr-6 lg:w-2/4">

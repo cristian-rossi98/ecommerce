@@ -6,7 +6,7 @@ import "../styles/skeleton.css";
 export default function Skeleton() {
   return (
     <>
-      <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md">
+      <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md lg:px-52">
         <button>
           <BiSearchAlt2 />
         </button>
@@ -17,11 +17,11 @@ export default function Skeleton() {
           <BiShoppingBag />
         </button>
       </header>
-      <main>
+      <main className="m-auto lg:w-4/5">
         <div className="w-full flex justify-center">
-          <ul className="my-20 p-6 flex justify-center flex-wrap w-4/5">
+          <ul className="my-20 px-2 py-6 flex justify-center flex-wrap ">
             {[...Array(20)].map((_, index) => (
-              <li className="skeleton flex flex-col items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg sm:w-72">
+              <li className="skeleton flex flex-col items-center w-5/12 p-4 m-2 bg-white rounded-md cursor-pointer ease-in-out shadow-lg sm:w-60">
                 <div className="h-44 w-52 flex justify-center items-center mx-8">
                   <div className="skeleton__thumbnail"></div>
                 </div>

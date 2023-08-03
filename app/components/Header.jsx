@@ -19,7 +19,7 @@ export default function Header({
   };
 
   return (
-    <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md">
+    <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md lg:px-52">
       <button onClick={clickSearch}>
         {searchActive ? <FaTimes /> : <BiSearchAlt2 />}
       </button>

@@ -164,12 +164,12 @@ export default function Home() {
                   onOrderProductChange={setOrderProduct}
                 />
                 {/* <div className="flex flex-row"> */}
-                  {/* <Filter /> */}
-                  <Products
-                    products={data}
-                    searchProduct={searchProduct}
-                    orderProduct={orderProduct}
-                  />
+                {/* <Filter /> */}
+                <Products
+                  products={data}
+                  searchProduct={searchProduct}
+                  orderProduct={orderProduct}
+                />
                 {/* </div> */}
               </main>
             }
