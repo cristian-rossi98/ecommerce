@@ -21,7 +21,7 @@ export default function Skeleton() {
         <div className="w-full flex justify-center">
           <ul className="my-20 px-2 py-6 flex justify-center flex-wrap ">
             {[...Array(20)].map((_, index) => (
-              <li className="skeleton flex flex-col items-center w-5/12 p-4 m-2 bg-white rounded-md cursor-pointer ease-in-out shadow-lg sm:w-60">
+              <li key={index} className="skeleton flex flex-col items-center w-5/12 p-4 m-2 bg-white rounded-md cursor-pointer ease-in-out shadow-lg sm:w-60">
                 <div className="h-44 w-52 flex justify-center items-center mx-8">
                   <div className="skeleton__thumbnail"></div>
                 </div>

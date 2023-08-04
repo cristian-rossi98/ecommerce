@@ -1,13 +1,15 @@
-import { useParams } from "react-router-dom";
-import Product from "./Product";
+const Product = lazy(() => import("./Product"));
 import BackButton from "./BackButton";
 import calculatePrice from "./calculatePrice";
+import { lazy, Suspense } from "react";
+
+import "../styles/skeleton.css";
 
 export default function Cart({
   handleRemoveCartProduct,
   cartProducts,
   handleSubCartProduct,
-  handleSumCartProduct
+  handleSumCartProduct,
 }) {
   const totalPrice = cartProducts.reduce((accumulator, product) => {
     return accumulator + product.price * product.quantity;
@@ -27,17 +29,29 @@ export default function Cart({
       {cartProducts.length ? (
         <ul className="w-full flex flex-col justify-evenly items-center">
           {cartProducts.map((product) => (
-            <Product
-              key={product.id}
-              product={product}
-              classStyle={
-                "flex w-full items-center w-5/12 p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg"
+            <Suspense
+              fallback={
+                <div className="skeleton flex w-full items-center p-4 m-4 bg-white rounded-md cursor-pointer">
+                  <div className="skeleton__thumbnail mr-2"></div>
+                  <div className="skeleton__info">
+                    <div className="skeleton__title"></div>
+                    <div className="skeleton__description"></div>
+                  </div>
+                </div>
               }
-              cartPage={true}
-              handleRemoveCartProduct={handleRemoveCartProduct}
-              handleSubCartProduct={handleSubCartProduct}
-              handleSumCartProduct={handleSumCartProduct}
-            />
+            >
+              <Product
+                key={product.id}
+                product={product}
+                classStyle={
+                  "flex w-full items-center p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg"
+                }
+                cartPage={true}
+                handleRemoveCartProduct={handleRemoveCartProduct}
+                handleSubCartProduct={handleSubCartProduct}
+                handleSumCartProduct={handleSumCartProduct}
+              />
+            </Suspense>
           ))}
         </ul>
       ) : (

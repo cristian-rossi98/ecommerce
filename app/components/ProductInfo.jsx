@@ -1,14 +1,19 @@
 import "../styles/productInfo.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import Rating from "./Rating";
 import BackButton from "./BackButton";
 import calculatePrice from "./calculatePrice";
 
 export default function ProductInfo({ handleCartProduct }) {
+  // const location = useLocation();
+  // const params = new URLSearchParams(location.search);
+  // const product = JSON.parse(decodeURIComponent(params.get('product')));
+  console.log('before decode');
   const params = useParams();
+  console.log('params ', params);
   const product = JSON.parse(decodeURIComponent(params.product));
-  const navigate = useNavigate();
+  console.log('after decode', product);
 
   let price = calculatePrice(product.price);
 

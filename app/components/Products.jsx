@@ -27,13 +27,23 @@ export default function Products({ products, searchProduct, orderProduct }) {
     default:
       break;
   }
-  // console.log(orderProduct);
+  
+  // const items = [];
+  // for (let i = 0; i < 1000; i++) {
+  //   items.push(<li key={i}>Item {i}</li>)
+  // }
+
+  // const complexMarkup = [];
+  // for (let i = 0; i < 100; i++) {
+  //   complexMarkup.push(<div key={i}>{items}</div>)
+  // }
 
   return (
     <>
       {sortedProducts.length ? (
         <div className="w-full flex justify-center">
           <ul className="px-2 py-6 flex justify-center flex-wrap">
+            {/* {complexMarkup} */}
             {sortedProducts.map((product) => (
               <Product
                 key={product.id}

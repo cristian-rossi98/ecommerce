@@ -35,7 +35,6 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    // return <p className="text-black">Carregando dados...</p>;
     return <Skeleton />;
   }
 
@@ -176,7 +175,6 @@ export default function Home() {
           ></Route>
           <Route
             path="/product/:product"
-            exact
             element={
               <main className="m-auto sm:w-4/5 lg:w-3/5">
                 <ProductInfo handleCartProduct={handleCartProduct} />

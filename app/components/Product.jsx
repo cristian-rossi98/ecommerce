@@ -9,13 +9,18 @@ export default function Product({
   cartPage,
   handleRemoveCartProduct,
   handleSubCartProduct,
-  handleSumCartProduct
+  handleSumCartProduct,
 }) {
   const navigate = useNavigate();
 
   let price = calculatePrice(product.price);
 
   const handleProductInfo = () => {
+    // navigate({
+    //   pathname: `/product/`,
+    //   search: `${encodeURIComponent(JSON.stringify(product))}`,
+    // });
+
     const productString = JSON.stringify(product);
     navigate(`/product/${encodeURIComponent(productString)}`);
   };
@@ -27,7 +32,8 @@ export default function Product({
           onClick={handleProductInfo}
           className="product-image"
           src={product.image}
-          alt=""
+          alt={product.title}
+          rel="preload"
         />
       </div>
       <div className="w-full flex flex-col justify-between">
@@ -41,9 +47,21 @@ export default function Product({
         {cartPage && (
           <>
             <div className="text-black flex flex-row justify-between w-20 border-solid border-2 border-gray-300 rounded-sm my-2">
-              <button onClick={() => handleSubCartProduct(product)} className="w-1/3 font-extrabold flex items-center justify-center bg-gray-300 h-6 hover:bg-gray-400">-</button>
-              <p className="w-1/3 h-6 flex items-center justify-center">{product.quantity}</p>
-              <button onClick={() => handleSumCartProduct(product)} className="w-1/3 font-medium flex items-center justify-center bg-gray-300 h-6 hover:bg-gray-400">+</button>
+              <button
+                onClick={() => handleSubCartProduct(product)}
+                className="w-1/3 font-extrabold flex items-center justify-center bg-gray-300 h-6 hover:bg-gray-400"
+              >
+                -
+              </button>
+              <p className="w-1/3 h-6 flex items-center justify-center">
+                {product.quantity}
+              </p>
+              <button
+                onClick={() => handleSumCartProduct(product)}
+                className="w-1/3 font-medium flex items-center justify-center bg-gray-300 h-6 hover:bg-gray-400"
+              >
+                +
+              </button>
             </div>
             <button
               onClick={() => handleRemoveCartProduct(product.id)}
