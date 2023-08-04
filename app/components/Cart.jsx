@@ -29,17 +29,17 @@ export default function Cart({
       {cartProducts.length ? (
         <ul className="w-full flex flex-col justify-evenly items-center">
           {cartProducts.map((product) => (
-            <Suspense
-              fallback={
-                <div className="skeleton flex w-full items-center p-4 m-4 bg-white rounded-md cursor-pointer">
-                  <div className="skeleton__thumbnail mr-2"></div>
-                  <div className="skeleton__info">
-                    <div className="skeleton__title"></div>
-                    <div className="skeleton__description"></div>
-                  </div>
-                </div>
-              }
-            >
+            // <Suspense
+            //   fallback={
+            //     <div key={product.id} className="skeleton flex w-full items-center p-4 m-4 bg-white rounded-md cursor-pointer">
+            //       <div className="skeleton__thumbnail mr-2"></div>
+            //       <div className="skeleton__info">
+            //         <div className="skeleton__title"></div>
+            //         <div className="skeleton__description"></div>
+            //       </div>
+            //     </div>
+            //   }
+            // >
               <Product
                 key={product.id}
                 product={product}
@@ -51,7 +51,7 @@ export default function Cart({
                 handleSubCartProduct={handleSubCartProduct}
                 handleSumCartProduct={handleSumCartProduct}
               />
-            </Suspense>
+            // </Suspense>
           ))}
         </ul>
       ) : (

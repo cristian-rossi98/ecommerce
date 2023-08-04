@@ -15,7 +15,12 @@ export default function Header({
 
   const handleCartNavigate = () => {
     const cartString = JSON.stringify(cartProducts);
-    navigates(`/cart/${encodeURIComponent(cartString)}`);
+    try {
+      navigates(`/cart/${btoa(cartString)}`);
+    } catch (error) {
+      navigates(`/cart/${encodeURIComponent(cartString)}`);
+    }
+    
   };
 
   return (

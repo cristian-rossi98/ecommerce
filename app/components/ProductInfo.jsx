@@ -9,11 +9,15 @@ export default function ProductInfo({ handleCartProduct }) {
   // const location = useLocation();
   // const params = new URLSearchParams(location.search);
   // const product = JSON.parse(decodeURIComponent(params.get('product')));
-  console.log('before decode');
+
   const params = useParams();
-  console.log('params ', params);
-  const product = JSON.parse(decodeURIComponent(params.product));
-  console.log('after decode', product);
+  let product;
+  try {
+    product = JSON.parse(atob(params.product));
+  } catch (error) {
+    product = JSON.parse(decodeURIComponent(params.product));
+  }
+  
 
   let price = calculatePrice(product.price);
 

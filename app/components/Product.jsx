@@ -17,12 +17,17 @@ export default function Product({
 
   const handleProductInfo = () => {
     // navigate({
-    //   pathname: `/product/`,
-    //   search: `${encodeURIComponent(JSON.stringify(product))}`,
+    //   pathname: `/product`,
+    //   search: `?product=${encodeURIComponent(JSON.stringify(product))}`,
     // });
-
+    
     const productString = JSON.stringify(product);
-    navigate(`/product/${encodeURIComponent(productString)}`);
+    try {
+      navigate(`/product/${btoa(productString)}`);
+    } catch (error) {
+      navigate(`/product/${encodeURIComponent(productString)}`);
+    }
+    
   };
 
   return (
