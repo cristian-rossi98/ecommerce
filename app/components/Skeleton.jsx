@@ -11,7 +11,7 @@ export default function Skeleton() {
           <BiSearchAlt2 />
         </button>
         <a href="/">
-          <h1 className="main-logo contents">Ecommerce</h1>
+          <h1 className="main-logo contents">E-commerce</h1>
         </a>
         <button>
           <BiShoppingBag />

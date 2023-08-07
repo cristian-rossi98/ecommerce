@@ -45,6 +45,15 @@ export default function Home() {
     }
   };
 
+  // const handleSearchProduct = (value) => {
+  //   setSearchProduct(value);
+  //   const filteredProducts = data.filter(
+  //     (product) =>
+  //       product.title.toLowerCase().indexOf(searchProduct.toLowerCase()) !== -1,
+  //       console.log('filtering produt')
+  //   );
+  // }
+
   const handleCartProduct = (product) => {
     try {
       const existingProduct = cartProducts.find(
@@ -147,30 +156,33 @@ export default function Home() {
           cartLenght={cartProducts.length}
           cartProducts={cartProducts}
         />
-        <SearchBar
-          searchActive={searchBarActive}
-          searchProduct={searchProduct}
-          onSearchProductChange={setSearchProduct}
-        />
         <Routes>
           <Route
             path="/"
             exact
             element={
-              <main className="m-auto lg:w-4/5">
-                <Order
-                  orderProduct={orderProduct}
-                  onOrderProductChange={setOrderProduct}
-                />
-                {/* <div className="flex flex-row"> */}
-                {/* <Filter /> */}
-                <Products
-                  products={data}
+              <>
+                <SearchBar
+                  searchActive={searchBarActive}
                   searchProduct={searchProduct}
-                  orderProduct={orderProduct}
+                  onSearchProductChange={setSearchProduct}
+                  // handleSearchProduct={handleSearchProduct}
                 />
-                {/* </div> */}
-              </main>
+                <main className="m-auto lg:w-4/5">
+                  <Order
+                    orderProduct={orderProduct}
+                    onOrderProductChange={setOrderProduct}
+                  />
+                  {/* <div className="flex flex-row"> */}
+                  {/* <Filter /> */}
+                  <Products
+                    products={data}
+                    searchProduct={searchProduct}
+                    orderProduct={orderProduct}
+                  />
+                  {/* </div> */}
+                </main>
+              </>
             }
           ></Route>
           <Route
