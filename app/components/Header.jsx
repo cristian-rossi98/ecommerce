@@ -1,6 +1,7 @@
 import { BiSearchAlt2, BiShoppingBag } from "react-icons/bi";
 import { FaTimes } from "react-icons/fa";
 import Badge from "@mui/material/Badge";
+import Image from 'next/image';
 
 import "../styles/header.css";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +30,7 @@ export default function Header({
         {searchActive ? <FaTimes /> : <BiSearchAlt2 />}
       </button>
       <a href="/">
-        <h1 className="main-logo contents">E-commerce</h1>
+        <h1 className="main-logo">E-commerce</h1>
       </a>
       <button className="flex" onClick={handleCartNavigate}>
         <Badge badgeContent={cartLenght} color="primary">
