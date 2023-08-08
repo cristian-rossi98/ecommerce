@@ -24,14 +24,14 @@ export default function Header({
   };
 
   return (
-    <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md lg:px-52">
-      <button onClick={clickSearch}>
+    <header className="flex justify-between items-start p-10 bg-red-500 text-3xl shadow-md lg:px-52">
+      <button className="flex" onClick={clickSearch}>
         {searchActive ? <FaTimes /> : <BiSearchAlt2 />}
       </button>
       <a href="/">
         <h1 className="main-logo contents">E-commerce</h1>
       </a>
-      <button onClick={handleCartNavigate}>
+      <button className="flex" onClick={handleCartNavigate}>
         <Badge badgeContent={cartLenght} color="primary">
           <BiShoppingBag />
         </Badge>
