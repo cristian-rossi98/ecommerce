@@ -1,5 +1,6 @@
 const Product = lazy(() => import("./Product"));
 import BackButton from "./BackButton";
+import NoResult from "./NoResult";
 import calculatePrice from "./calculatePrice";
 import { lazy, Suspense } from "react";
 
@@ -40,26 +41,22 @@ export default function Cart({
             //     </div>
             //   }
             // >
-              <Product
-                key={product.id}
-                product={product}
-                classStyle={
-                  "flex w-full items-center p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg"
-                }
-                cartPage={true}
-                handleRemoveCartProduct={handleRemoveCartProduct}
-                handleSubCartProduct={handleSubCartProduct}
-                handleSumCartProduct={handleSumCartProduct}
-              />
+            <Product
+              key={product.id}
+              product={product}
+              classStyle={
+                "flex w-full items-center p-4 m-4 bg-white rounded-md cursor-pointer transition duration-200 ease-in-out shadow-lg"
+              }
+              cartPage={true}
+              handleRemoveCartProduct={handleRemoveCartProduct}
+              handleSubCartProduct={handleSubCartProduct}
+              handleSumCartProduct={handleSumCartProduct}
+            />
             // </Suspense>
           ))}
         </ul>
       ) : (
-        <div className="h-screen flex justify-center items-center">
-          <p className="text-gray-700 text-2xl text-center">
-            Nenhum produto adicionado
-          </p>
-        </div>
+        <NoResult value="Nenhum produto adicionado" />
       )}
     </section>
   );

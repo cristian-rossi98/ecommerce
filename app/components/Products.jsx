@@ -1,4 +1,5 @@
 import Product from "./Product";
+import NoResult from "./NoResult";
 
 export default function Products({ products, searchProduct, orderProduct }) {
   const filteredProducts = products.filter(
@@ -47,11 +48,7 @@ export default function Products({ products, searchProduct, orderProduct }) {
           </ul>
         </div>
       ) : (
-        <div className="h-screen flex justify-center items-center">
-          <p className="text-gray-700 text-2xl text-center">
-            Nenhum resultado encontrado
-          </p>
-        </div>
+        <NoResult value='Nenhum produto encontrado'/>
       )}
     </>
   );

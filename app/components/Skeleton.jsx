@@ -6,12 +6,12 @@ import "../styles/skeleton.css";
 export default function Skeleton() {
   return (
     <>
-      <header className="flex justify-between items-center p-10 bg-red-500 text-3xl shadow-md lg:px-52">
+      <header className="flex justify-between items-start p-10 bg-red-500 text-3xl shadow-md lg:px-52">
         <button>
           <BiSearchAlt2 />
         </button>
         <a href="/">
-          <h1 className="main-logo contents">E-commerce</h1>
+          <h1 className="main-logo">E-commerce</h1>
         </a>
         <button>
           <BiShoppingBag />
