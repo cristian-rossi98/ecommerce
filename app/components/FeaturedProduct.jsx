@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import "../styles/product.css";
 import calculatePrice from "./calculatePrice";
+import twoWords from "./twoWords";
 
 export default function FeaturedProduct({
   product,
@@ -33,63 +34,54 @@ export default function FeaturedProduct({
     }
   };
 
-  const getFirstTwoWords = (inputString, pos1, pos2) => {
-    const stringWithoutHyphens = inputString.replace(/-/g, "");
-    const words = stringWithoutHyphens.split(" ");
-    const firstTwoWords = words.slice(pos1, pos2);
-    return firstTwoWords.join(" ");
-  };
-
   return (
     <>
-      {product.category == category && (
-        <li
-          className={classStyle}
-          style={{
-            backgroundImage: `repeating-linear-gradient(${degree}deg, ${inlineStyle}, ${inlineStyle} 10px, ${inlineStyleBackground} 10px, ${inlineStyleBackground} 20px)`,
-            backgroundSize: "22px 22px",
-          }}
-        >
-          <div>
-            <img
-              onClick={handleProductInfo}
-              className="product-image"
-              src={product.image}
-              alt={product.title}
-              rel="preload"
-            />
-          </div>
-          <div className="absolute top-0 left-0">
+      <li
+        onClick={handleProductInfo}
+        className={classStyle}
+        style={{
+          backgroundImage: `repeating-linear-gradient(${degree}deg, ${inlineStyle}, ${inlineStyle} 10px, ${inlineStyleBackground} 10px, ${inlineStyleBackground} 20px)`,
+          backgroundSize: "22px 22px",
+        }}
+      >
+        <div>
+          <img
+            className="product-image"
+            src={product.image}
+            alt={product.title}
+            rel="preload"
+          />
+        </div>
+        <div className="absolute top-0 left-0">
+          <h1
+            onClick={handleProductInfo}
+            className="hover:underline table text-3xl font-bold text-black mb-5 bg-neutral-50 px-8 py-4 shadow-md"
+          >
+            {twoWords(product.title, 0, 1)}
+          </h1>
+          {twoWords(product.title, 1, 2) ? (
             <h1
               onClick={handleProductInfo}
-              className="hover:underline table text-3xl font-bold text-black mb-5 bg-neutral-50 px-8 py-4"
+              className="hover:underline inline text-3xl font-bold text-black bg-neutral-50 px-8 py-4 shadow-md"
             >
-              {getFirstTwoWords(product.title, 0, 1)}
+              {twoWords(product.title, 1, 2)}
             </h1>
-            {getFirstTwoWords(product.title, 1, 2) ? (
-              <h1
-                onClick={handleProductInfo}
-                className="hover:underline inline text-3xl font-bold text-black bg-neutral-50 px-8 py-4"
-              >
-                {getFirstTwoWords(product.title, 1, 2)}
-              </h1>
-            ) : (
-              <h1
-                onClick={handleProductInfo}
-                className="hover:underline inline text-3xl font-bold text-black bg-neutral-50 px-8 py-4"
-              >
-                {getFirstTwoWords(product.title, 2, 3)}
-              </h1>
-            )}
-            <p
+          ) : (
+            <h1
               onClick={handleProductInfo}
-              className="hover:underline table text-sm font-medium text-neutral-700 mt-5 bg-neutral-50 px-8 py-4"
+              className="hover:underline inline text-3xl font-bold text-black bg-neutral-50 px-8 py-4 shadow-md"
             >
-              R$ {price}
-            </p>
-          </div>
-        </li>
-      )}
+              {twoWords(product.title, 2, 3)}
+            </h1>
+          )}
+          <p
+            onClick={handleProductInfo}
+            className="hover:underline table text-sm font-medium text-neutral-700 mt-5 bg-neutral-50 px-8 py-4 shadow-md"
+          >
+            R$ {price}
+          </p>
+        </div>
+      </li>
 
       {/* <p className="text-sm font-light text-black">R$ {price}</p> */}
       {/* Carrinho */}

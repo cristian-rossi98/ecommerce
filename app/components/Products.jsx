@@ -3,6 +3,7 @@ import SnapProduct from "./SnapProduct";
 import NoResult from "./NoResult";
 
 import "../styles/product.css";
+import "../styles/snapProduct.css";
 
 export default function Products({ products, searchProduct, orderProduct }) {
   const filteredProducts = products.filter(
@@ -41,14 +42,28 @@ export default function Products({ products, searchProduct, orderProduct }) {
   ];
   const degree = ["45", "135", "45"];
 
-  // ${productColors[index % productColors.length]}
+  const featuredProductsMen = sortedProducts.filter(
+    (product) => product.category === "men's clothing"
+  );
+
+  const featuredProductsJewelery = sortedProducts.filter(
+    (product) => product.category === "jewelery"
+  );
+
+  const snapProductsElectronics = sortedProducts.filter(
+    (product) => product.category === "electronics"
+  );
+
+  const featuredProductsWomen = sortedProducts.filter(
+    (product) => product.category === "women's clothing"
+  );
 
   return (
     <>
       {sortedProducts.length ? (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center flex-col">
           <ul className="flex justify-center flex-wrap">
-            {sortedProducts.map((product, index) => (
+            {featuredProductsMen.map((product, index) => (
               <FeaturedProduct
                 key={product.id}
                 product={product}
@@ -63,7 +78,6 @@ export default function Products({ products, searchProduct, orderProduct }) {
                 }
                 degree={degree[index % degree.length]}
                 cartPage={false}
-                category={`men's clothing`}
               />
             ))}
             <li className="bg-black px-4 py-8">
@@ -79,7 +93,7 @@ export default function Products({ products, searchProduct, orderProduct }) {
                 and will be referred to as ‘Natural’.
               </p>
             </li>
-            {sortedProducts.map((product, index) => (
+            {featuredProductsJewelery.map((product, index) => (
               <FeaturedProduct
                 key={product.id}
                 product={product}
@@ -94,10 +108,32 @@ export default function Products({ products, searchProduct, orderProduct }) {
                 }
                 degree={degree[index % degree.length]}
                 cartPage={false}
-                category={`jewelery`}
               />
             ))}
-            <SnapProduct />
+          </ul>
+          <section className="py-8 w-full">
+            {/* <div className="w-full overflow-x-auto snap-x"> */}
+            <div className="relative w-full flex gap-6 snap-x snap-mandatory overflow-x-auto pb-14">
+              {snapProductsElectronics.map((product) => (
+                <SnapProduct key={product.id} product={product} />
+              ))}
+            </div>
+            {/* </div> */}
+          </section>
+          <ul>
+            {featuredProductsWomen.map((product, index) => (
+              <FeaturedProduct
+                key={product.id}
+                product={product}
+                classStyle={`relative flex justify-center items-center w-full h-96 
+                  
+                  cursor-pointer transition duration-200 ease-in-out hover:scale-105 hover:shadow-xl sm:w-60`}
+                inlineStyle="white"
+                inlineStyleBackground="white"
+                degree={degree[index % degree.length]}
+                cartPage={false}
+              />
+            ))}
           </ul>
         </div>
       ) : (

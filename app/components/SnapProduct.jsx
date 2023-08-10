@@ -1,28 +1,40 @@
-export default function SnapProduct() {
+import "../styles/snapProduct.css";
+
+import twoWords from "./twoWords";
+import calculatePrice from "./calculatePrice";
+import { useNavigate } from "react-router-dom";
+
+export default function SnapProduct({ product }) {
+  const navigate = useNavigate();
+
+  const handleProductInfo = () => {
+    const productString = JSON.stringify(product);
+    try {
+      navigate(`/product/${btoa(productString)}`);
+    } catch (error) {
+      navigate(`/product/${encodeURIComponent(productString)}`);
+    }
+  };
+
   return (
     <>
-      <section className="bg-red-300 py-8">
-        <div className="relative w-full flex gap-6 snap-x snap-mandatory overflow-x-auto">
-          <div className="snap-center shrink-0">
-            <img src="https://images.unsplash.com/photo-1604999565976-8913ad2ddb7c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-          </div>
-          <div className="snap-center shrink-0">
-            <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-          </div>
-          <div className="snap-center shrink-0">
-            <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-          </div>
-          <div className="snap-center shrink-0">
-            <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-          </div>
-          <div className="snap-center shrink-0">
-            <img src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-          </div>
-          <div className="snap-center shrink-0">
-            <img src="https://images.unsplash.com/photo-1559333086-b0a56225a93c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
-          </div>
-        </div>
-      </section>
+      <div
+        onClick={handleProductInfo}
+        className="relative snap-center shrink-0 h-40 cursor-pointer"
+      >
+        <h1 className="absolute inline py-2 px-12 text-white bg-blue-700 text-lg font-bold product-title">
+          {twoWords(product.title, 0, 2)}
+        </h1>
+        <h1 className="absolute inline py-2 px-12 text-white bg-blue-700 text-xs font-medium product-description">
+          R$ {calculatePrice(product.price)}
+        </h1>
+        <img
+          className="product-image mx-28"
+          src={product.image}
+          alt={product.title}
+          rel="preload"
+        />
+      </div>
     </>
   );
 }
