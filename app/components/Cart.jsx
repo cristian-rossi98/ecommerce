@@ -1,4 +1,4 @@
-const Product = lazy(() => import("./Product"));
+const Product = lazy(() => import("./FeaturedProduct"));
 import BackButton from "./BackButton";
 import NoResult from "./NoResult";
 import calculatePrice from "./calculatePrice";

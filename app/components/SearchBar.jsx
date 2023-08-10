@@ -1,22 +1,21 @@
-export default function SearchBar({
-  searchActive,
-  searchProduct,
-  onSearchProductChange,
-  handleSearchProduct,
-}) {
+import { BiSearchAlt2 } from "react-icons/bi";
+
+export default function SearchBar({ searchProduct, onSearchProductChange }) {
   return (
-    <section className="w-screen h-12">
-      {searchActive && (
+    <section className="w-full">
+      <div className="relative">
         <input
-          className="w-screen text-black text-center font-extralight p-1 border-solid border-b-2 border-t-2 border-red-500 focus:outline-none shadow-md"
+          className="w-full p-2 text-black font-light text-sm bg-neutral-200 focus:outline-none focus:border-neutral-300 transition duration-300 border-2 border-transparent pr-10"
           type="search"
-          placeholder="PESQUISE AQUI"
+          placeholder="Pesquise por produtos"
           maxLength={30}
           value={searchProduct}
           onChange={(e) => onSearchProductChange(e.target.value)}
-          // onChange={(e) => handleSearchProduct(e.target.value)}
         />
-      )}
+        <div className="absolute inset-y-0 right-0 flex items-center pr-2 pt-1 pointer-events-none">
+          <BiSearchAlt2 className="text-neutral-800 text-lg" />
+        </div>
+      </div>
     </section>
   );
 }

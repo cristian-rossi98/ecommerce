@@ -151,10 +151,10 @@ export default function Home() {
       <Router>
         <Toaster />
         <Header
-          clickSearch={handleSearchBar}
-          searchActive={searchBarActive}
           cartLenght={cartProducts.length}
           cartProducts={cartProducts}
+          searchProduct={searchProduct}
+          setSearchProduct={setSearchProduct}
         />
         <Routes>
           <Route
@@ -162,25 +162,16 @@ export default function Home() {
             exact
             element={
               <>
-                <SearchBar
-                  searchActive={searchBarActive}
-                  searchProduct={searchProduct}
-                  onSearchProductChange={setSearchProduct}
-                  // handleSearchProduct={handleSearchProduct}
-                />
                 <main className="m-auto lg:w-4/5">
-                  <Order
+                  {/* <Order
                     orderProduct={orderProduct}
                     onOrderProductChange={setOrderProduct}
-                  />
-                  {/* <div className="flex flex-row"> */}
-                  {/* <Filter /> */}
+                  /> */}
                   <Products
                     products={data}
                     searchProduct={searchProduct}
                     orderProduct={orderProduct}
                   />
-                  {/* </div> */}
                 </main>
               </>
             }

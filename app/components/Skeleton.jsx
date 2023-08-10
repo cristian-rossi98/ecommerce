@@ -1,22 +1,28 @@
 import { BiSearchAlt2, BiShoppingBag } from "react-icons/bi";
 
+import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import "../styles/skeleton.css";
 
 export default function Skeleton() {
   return (
     <>
-      <header className="flex justify-between items-start p-10 bg-red-500 text-3xl shadow-md lg:px-52">
-        <button>
-          <BiSearchAlt2 />
+      <header className="flex flex-col items-start p-4 bg-neutral-50 text-3xl shadow-md lg:px-52">
+      <div className="flex justify-between w-full">
+        <button
+          className="bg-black rounded-2xl w-8 h-8 flex justify-center items-center"
+        >
+          <h1 className="main-logo">e</h1>
         </button>
-        <a href="/">
-          <h1 className="main-logo">E-commerce</h1>
-        </a>
-        <button>
-          <BiShoppingBag />
+        <button className="flex">
+            <BiShoppingBag className="text-neutral-800" />
         </button>
-      </header>
+      </div>
+      <div className="flex pt-6 w-full">
+        <SearchBar
+        />
+      </div>
+    </header>
       <main className="m-auto lg:w-4/5">
         <div className="w-full flex justify-center">
           <ul className="my-20 px-2 py-6 flex justify-center flex-wrap ">
