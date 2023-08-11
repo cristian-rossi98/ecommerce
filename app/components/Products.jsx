@@ -34,13 +34,19 @@ export default function Products({ products, searchProduct, orderProduct }) {
       break;
   }
 
-  const productColors = ["rgb(30 64 175)", "rgb(38 38 38)", "rgb(159 18 57)"];
-  const productColorsBackground = [
-    "rgb(30, 64, 175, 0.9)",
-    "rgb(38, 38, 38, 0.9)",
-    "rgb(159, 18, 57, 0.9)",
+  const productColors = [
+    "rgb(55 48 163)",
+    "rgb(0 0 0)",
+    "rgb(134 25 143)",
+    "rgb(0 0 0)",
   ];
-  const degree = ["45", "135", "45"];
+  const productColorsBackground = [
+    "rgb(55, 48, 163, 0.95)",
+    "rgb(0, 0, 0, 0.95)",
+    "rgb(134, 25, 143, 0.95)",
+    "rgb(0, 0, 0, 0.95)",
+  ];
+  const degree = ["45", "135"];
 
   const featuredProductsMen = sortedProducts.filter(
     (product) => product.category === "men's clothing"
@@ -80,8 +86,8 @@ export default function Products({ products, searchProduct, orderProduct }) {
                 cartPage={false}
               />
             ))}
-            <li className="bg-black px-4 py-8">
-              <h1 className="text-xl font-bold mb-2">
+            <li className="bg-black px-8 pb-16 pt-8">
+              <h1 className="text-xl font-bold mb-8">
                 Release Details: The Yeezy BOOST 350 V2 ‘Natural'
               </h1>
               <p>
@@ -122,17 +128,19 @@ export default function Products({ products, searchProduct, orderProduct }) {
           </section>
           <ul>
             {featuredProductsWomen.map((product, index) => (
-              <FeaturedProduct
-                key={product.id}
-                product={product}
-                classStyle={`relative flex justify-center items-center w-full h-96 
-                  
-                  cursor-pointer transition duration-200 ease-in-out hover:scale-105 hover:shadow-xl sm:w-60`}
-                inlineStyle="white"
-                inlineStyleBackground="white"
-                degree={degree[index % degree.length]}
-                cartPage={false}
-              />
+              <div className="p-8">
+                <FeaturedProduct
+                  key={product.id}
+                  product={product}
+                  classStyle={`relative flex justify-center items-center w-full h-96
+                
+                    cursor-pointer transition duration-200 ease-in-out hover:scale-105 hover:shadow-xl sm:w-60`}
+                  inlineStyle="rgb(245 245 245)"
+                  inlineStyleBackground="rgb(245 245 245)"
+                  degree={degree[index % degree.length]}
+                  cartPage={false}
+                />
+              </div>
             ))}
           </ul>
         </div>

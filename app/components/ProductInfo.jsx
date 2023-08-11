@@ -1,15 +1,11 @@
 import "../styles/productInfo.css";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Rating from "./Rating";
-import BackButton from "./BackButton";
 import calculatePrice from "./calculatePrice";
+import twoWords from "./twoWords";
 
 export default function ProductInfo({ handleCartProduct }) {
-  // const location = useLocation();
-  // const params = new URLSearchParams(location.search);
-  // const product = JSON.parse(decodeURIComponent(params.get('product')));
-
   const params = useParams();
   let product;
   try {
@@ -17,29 +13,57 @@ export default function ProductInfo({ handleCartProduct }) {
   } catch (error) {
     product = JSON.parse(decodeURIComponent(params.product));
   }
-  
 
   let price = calculatePrice(product.price);
 
   return (
-    <section className="px-2 py-6">
-      <BackButton />
-      <section className="md:flex">
-        <div className="bg-white text-center p-10 rounded-md mb-4 md:w-2/4 md:mr-6 lg:w-2/4">
-          <img className="m-auto" src={product.image} alt="" />
+    <section className="md:flex">
+      <div
+        className="bg-blue-800 relative flex justify-center items-center w-full h-auto py-20 
+                  cursor-pointer transition duration-200 ease-in-out hover:scale-105 hover:shadow-xl sm:w-60"
+      >
+        {/* <img className="m-auto" src={product.image} alt="" /> */}
+        <div>
+          <img
+            className="product-image-info"
+            src={product.image}
+            alt={product.title}
+            rel="preload"
+          />
         </div>
+        <div className="absolute top-5 left-0">
+          <h1 className="hover:underline text-3xl font-bold text-black bg-neutral-50 px-6 pt-4">
+            {twoWords(product.title, 0, 1)}
+          </h1>
+          {twoWords(product.title, 1, 2) ? (
+            <h1 className="hover:underline text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
+              {twoWords(product.title, 1, 2)}
+            </h1>
+          ) : (
+            <h1 className="hover:underline text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
+              {twoWords(product.title, 2, 3)}
+            </h1>
+          )}
+          <p className="hover:underline table text-base font-bold text-neutral-700  bg-neutral-50 px-6 py-4">
+            R$ {price}
+          </p>
+        </div>
+      </div>
+
+      <div className="px-4">
         <div className="md:w-2/4 lg:w-2/4">
-          <div className="mb-6">
-            <h1 className="text-lg text-gray-900 font-semibold uppercase mb-2">
+          <div className="mb-16 mt-8">
+            <h1 className="text-lg font-semibold text-neutral-800 text-justify">
               {product.title}
             </h1>
-            <p className="text-base text-gray-700 mb-4">R$ {price}</p>
-            <p className="text-xs text-gray-500">{product.description}</p>
+            <p className="text-lg text-neutral-800 text-justify">
+              {product.description}
+            </p>
           </div>
           <div className="w-full">
             <button
               onClick={() => handleCartProduct(product)}
-              className="bg-red-500 p-4 mb-10 w-full rounded-sm hover:bg-red-600 md:w-2/5"
+              className="bg-black p-4 mb-10 w-full rounded-sm md:w-2/5"
             >
               COMPRAR
             </button>
@@ -55,7 +79,7 @@ export default function ProductInfo({ handleCartProduct }) {
             </p>
           </div>
         </div>
-      </section>
+      </div>
     </section>
   );
 }
