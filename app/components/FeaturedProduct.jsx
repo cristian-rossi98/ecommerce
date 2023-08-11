@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import "../styles/product.css";
 import calculatePrice from "./calculatePrice";
@@ -26,12 +26,13 @@ export default function FeaturedProduct({
     //   search: `?product=${encodeURIComponent(JSON.stringify(product))}`,
     // });
 
-    const productString = JSON.stringify(product);
-    try {
-      navigate(`/product/${btoa(productString)}`);
-    } catch (error) {
-      navigate(`/product/${encodeURIComponent(productString)}`);
-    }
+    // const productString = JSON.stringify(product.id);
+    // try {
+    //   navigate(`/product/${btoa(productString)}`);
+    // } catch (error) {
+    //   navigate(`/product/${encodeURIComponent(productString)}`);
+    // }
+    navigate(`/product/${product.id}`);
   };
 
   return (

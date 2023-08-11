@@ -5,16 +5,25 @@ import Rating from "./Rating";
 import calculatePrice from "./calculatePrice";
 import twoWords from "./twoWords";
 
-export default function ProductInfo({ handleCartProduct }) {
+export default function ProductInfo({ handleCartProduct, products }) {
+  console.log("load");
   const params = useParams();
-  let product;
+  let productId;
+
   try {
-    product = JSON.parse(atob(params.product));
+    productId = JSON.parse(atob(params.product));
   } catch (error) {
-    product = JSON.parse(decodeURIComponent(params.product));
+    productId = JSON.parse(decodeURIComponent(params.product));
   }
 
-  let price = calculatePrice(product.price);
+  const product = products.find(
+    (product) => product.id === parseInt(productId)
+  );
+  const price = calculatePrice(product.price);
+
+  if (!product) {
+    return <div>Produto não encontrado.</div>;
+  }
 
   return (
     <section className="md:flex">

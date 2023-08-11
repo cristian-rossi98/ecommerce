@@ -413,7 +413,10 @@ export default function Home() {
             path="/product/:product"
             element={
               <main className="m-auto sm:w-4/5 lg:w-3/5">
-                <ProductInfo handleCartProduct={handleCartProduct} />
+                <ProductInfo
+                  handleCartProduct={handleCartProduct}
+                  products={data}
+                />
               </main>
             }
           />

@@ -8,12 +8,13 @@ export default function SnapProduct({ product }) {
   const navigate = useNavigate();
 
   const handleProductInfo = () => {
-    const productString = JSON.stringify(product);
-    try {
-      navigate(`/product/${btoa(productString)}`);
-    } catch (error) {
-      navigate(`/product/${encodeURIComponent(productString)}`);
-    }
+    // const productString = JSON.stringify(product);
+    // try {
+    //   navigate(`/product/${btoa(productString)}`);
+    // } catch (error) {
+    //   navigate(`/product/${encodeURIComponent(productString)}`);
+    // }
+    navigate(`/product/${product.id}`);
   };
 
   return (
