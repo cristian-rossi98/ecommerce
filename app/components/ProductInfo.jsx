@@ -28,7 +28,7 @@ export default function ProductInfo({ handleCartProduct, products }) {
   return (
     <section className="md:flex">
       <div
-        className="bg-blue-800 relative flex justify-center items-center w-full h-auto py-20 
+        className="bg-indigo-800 relative flex justify-center items-center w-full h-auto py-20 
                   cursor-pointer transition duration-200 ease-in-out hover:scale-105 hover:shadow-xl sm:w-60"
       >
         {/* <img className="m-auto" src={product.image} alt="" /> */}
