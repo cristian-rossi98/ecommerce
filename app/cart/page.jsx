@@ -4,13 +4,15 @@ import Header from "../components/Header";
 import NoResult from "../components/NoResult";
 import CartProduct from "../components/CartProduct";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function Page() {
-  const storedItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const [cart, setCart] = useState(storedItems);
-  console.log(cart);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+  }, []);
 
   const totalPrice = cart.reduce((accumulator, product) => {
     return accumulator + product.price * product.quantity;
