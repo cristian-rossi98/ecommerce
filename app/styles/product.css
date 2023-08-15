@@ -3,6 +3,15 @@
   max-height: 300px;
 }
 
+.product-text {
+  transition: all .3s;
+}
+
+.product-list:hover .product-text {
+  background-color: black;
+  color: white;
+}
+
 @media (min-width: 768px) {
   .product-image {
     max-width: 330px;

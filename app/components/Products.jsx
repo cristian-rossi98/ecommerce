@@ -43,7 +43,7 @@ export default function Products({ products }) {
             <FeaturedProduct
               key={product.id}
               product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4`}
+              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 product-list`}
               inlineStyle={productColors[index % productColors.length]}
               inlineStyleBackground={
                 productColorsBackground[index % productColorsBackground.length]
@@ -57,7 +57,7 @@ export default function Products({ products }) {
             <h1 className="text-xl font-bold mb-8 lg:hidden">
               Detalhes do Lançamento: O Elegante Glamour X1
             </h1>
-            <div className="hidden lg:flex lg:flex-col lg:mr-8 lg:justify-between">
+            <div className="hidden lg:flex lg:flex-col lg:mr-16 lg:justify-between">
               <h1 className="text-xl lg:text-5xl font-bold lg:mb-0">
                 Detalhes do Lançamento: O Elegante Glamour X1
               </h1>
@@ -65,7 +65,7 @@ export default function Products({ products }) {
                 EM BREVE
               </p>
             </div>
-            <p className="text-justify lg:text-lg">
+            <p className="text-justify lg:text-xl">
               A prestigiada série Glamour X1 continua a surpreender. Depois do
               impactante lançamento da edição 'Luxo', chegou a hora de desvendar
               os emocionantes detalhes sobre a mais recente joia: o tão
@@ -86,7 +86,7 @@ export default function Products({ products }) {
             <FeaturedProduct
               key={product.id}
               product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4`}
+              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 product-list`}
               inlineStyle={productColors[index % productColors.length]}
               inlineStyleBackground={
                 productColorsBackground[index % productColorsBackground.length]
@@ -108,7 +108,7 @@ export default function Products({ products }) {
               <FeaturedProduct
                 key={product.id}
                 product={product}
-                classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out `}
+                classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out product-list`}
                 inlineStyle="rgb(244 244 244)"
                 inlineStyleBackground="rgb(244 244 244)"
                 degree={degree[index % degree.length]}
