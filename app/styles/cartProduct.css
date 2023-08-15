@@ -1,4 +1,11 @@
 .product-image-cart {
-  max-height: 50px;
+  /* max-height: 50px; */
   max-width: 50px;
+}
+
+@media (min-width: 768px) {
+  .product-image-cart {
+    max-width: 150px;
+    /* max-height: 200px; */
+  }
 }

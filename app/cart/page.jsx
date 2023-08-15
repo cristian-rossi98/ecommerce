@@ -47,7 +47,7 @@ export default function Page() {
   return (
     <>
       <Header cart={cart} />
-      <section className="px-4 m-auto ">
+      <section className="px-8 m-auto ">
         <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12"></div>
         {cart.length ? (
@@ -84,7 +84,7 @@ export default function Page() {
                     R$ {totalPrice.toFixed(2)}
                   </p>
                 </div>
-                <button className="bg-black p-4 mb-10 w-full rounded-sm md:w-2/5">
+                <button className="bg-black p-4 mb-10 w-full rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black">
                   FINALIZAR COMPRA
                 </button>
               </div>

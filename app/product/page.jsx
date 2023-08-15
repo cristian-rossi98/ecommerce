@@ -80,10 +80,7 @@ export default function Page() {
     <>
       <Header cart={cart} />
       <section className="w-full lg:flex">
-        <div
-          className="bg-indigo-800 relative flex justify-center items-center w-full lg:w-3/5 h-auto py-20 
-                  cursor-pointer transition duration-200 ease-in-out"
-        >
+        <div className="bg-indigo-800 relative flex justify-center items-center w-full lg:w-3/5 h-auto py-20 transition duration-200 ease-in-out">
           <div className="flex items-center justify-center">
             <img
               className="product-image-info"
@@ -93,7 +90,7 @@ export default function Page() {
             />
           </div>
           <div className="absolute top-5 left-0">
-            <h1 className="hover:underline text-3xl font-bold text-black bg-neutral-50 px-6 pt-4 lg:pb-4">
+            <h1 className="text-3xl font-bold text-black bg-neutral-50 px-6 pt-4 lg:pb-4">
               {twoWords(product.title, 0, 1)}{" "}
               <span className="md:inline hidden">
                 {twoWords(product.title, 1, 2)
@@ -103,16 +100,16 @@ export default function Page() {
             </h1>
             <span className="md:hidden">
               {twoWords(product.title, 1, 2) ? (
-                <h1 className="hover:underline text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
+                <h1 className="text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
                   {twoWords(product.title, 1, 2)}
                 </h1>
               ) : (
-                <h1 className="hover:underline text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
+                <h1 className="text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
                   {twoWords(product.title, 2, 3)}
                 </h1>
               )}
             </span>
-            <p className="hover:underline table text-base font-bold text-neutral-700  bg-neutral-50 px-6 py-4">
+            <p className="table text-base font-bold text-neutral-700  bg-neutral-50 px-6 py-4">
               R$ {product.price}
             </p>
           </div>
@@ -130,7 +127,7 @@ export default function Page() {
           <div className="w-full">
             <button
               onClick={() => handleCartAddProduct(product)}
-              className="bg-black p-4 mb-10 w-full rounded-sm"
+              className="bg-black p-4 mb-10 w-full font-medium rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black"
             >
               COMPRAR
             </button>
