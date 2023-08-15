@@ -43,7 +43,7 @@ export default function Products({ products }) {
             <FeaturedProduct
               key={product.id}
               product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 lg:h-44 xl:w-1/4`}
+              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4`}
               inlineStyle={productColors[index % productColors.length]}
               inlineStyleBackground={
                 productColorsBackground[index % productColorsBackground.length]
@@ -53,7 +53,7 @@ export default function Products({ products }) {
           ))}
         </ul>
         <ul className="flex justify-center flex-wrap">
-          <li className="bg-black px-8 lg:px-16 pb-16 pt-8 lg:flex lg:flex-row">
+          <li className="bg-black px-8 lg:px-16 lg:py-16 pb-16 pt-8 lg:flex lg:flex-row">
             <h1 className="text-xl font-bold mb-8 lg:hidden">
               Detalhes do Lançamento: O Elegante Glamour X1
             </h1>
@@ -86,7 +86,7 @@ export default function Products({ products }) {
             <FeaturedProduct
               key={product.id}
               product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 lg:h-44 xl:w-1/4`}
+              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4`}
               inlineStyle={productColors[index % productColors.length]}
               inlineStyleBackground={
                 productColorsBackground[index % productColorsBackground.length]
