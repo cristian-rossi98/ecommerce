@@ -3,21 +3,9 @@ import { useRouter } from "next/navigation";
 import "../styles/snapProduct.css";
 
 import twoWords from "./twoWords";
-// import { useNavigate } from "react-router-dom";
 
 export default function SnapProduct({ product }) {
-  // const navigate = useNavigate();
   const router = useRouter();
-
-  const handleProductInfo = () => {
-    // const productString = JSON.stringify(product);
-    // try {
-    //   navigate(`/product/${btoa(productString)}`);
-    // } catch (error) {
-    //   navigate(`/product/${encodeURIComponent(productString)}`);
-    // }
-    // navigate(`/product/${product.id}`);
-  };
 
   return (
     <>
