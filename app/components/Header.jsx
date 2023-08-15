@@ -1,26 +1,36 @@
+"use client";
+
 import { BiShoppingBag } from "react-icons/bi";
 import Badge from "@mui/material/Badge";
 
 import SearchBar from "./SearchBar";
 
 import "../styles/header.css";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 export default function Header({
   cartLenght,
   cartProducts,
   searchProduct,
   setSearchProduct,
+  cart,
 }) {
-  const navigates = useNavigate();
+  // const navigates = useNavigate();
+  const router = useRouter();
+  // const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const handleCartNavigate = () => {
-    const cartString = JSON.stringify(cartProducts);
-    try {
-      navigates(`/cart/${btoa(cartString)}`);
-    } catch (error) {
-      navigates(`/cart/${encodeURIComponent(cartString)}`);
-    }
+    // const cartString = JSON.stringify(cartProducts);
+    // try {
+    //   navigates(`/cart/${btoa(cartString)}`);
+    // } catch (error) {
+    //   navigates(`/cart/${encodeURIComponent(cartString)}`);
+    // }
+    router.push("/cart");
+  };
+
+  const handleSearchNavigate = (key, value) => {
+    key === "Enter" && router.push(`/search?search=${value}`);
   };
 
   return (
@@ -33,15 +43,16 @@ export default function Header({
           <h1 className="main-logo">e</h1>
         </a>
         <button className="flex" onClick={handleCartNavigate}>
-          <Badge badgeContent={cartLenght} color="primary">
+          <Badge badgeContent={cart.length} color="primary">
             <BiShoppingBag className="text-neutral-800" />
           </Badge>
         </button>
       </div>
       <div className="flex pt-6 w-full">
         <SearchBar
-          searchProduct={searchProduct}
-          onSearchProductChange={setSearchProduct}
+          // searchProduct={searchProduct}
+          // onSearchProductChange={setSearchProduct}
+          handleSearchNavigate={handleSearchNavigate}
         />
       </div>
     </header>

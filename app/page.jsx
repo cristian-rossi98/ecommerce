@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 import Header from "./components/Header";
@@ -289,9 +289,12 @@ export default function Home() {
   const [searchProduct, setSearchProduct] = useState("");
   const [orderProduct, setOrderProduct] = useState("0");
   const [cartProducts, setCartProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  // const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    fetch("https://json-server-rose-one.vercel.app/products")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -304,7 +307,7 @@ export default function Home() {
   }, []);
 
   if (loading) {
-    return <Skeleton />;
+    return <Skeleton itemsNumber={20} />;
   }
 
   const handleCartProduct = (product) => {
@@ -381,36 +384,37 @@ export default function Home() {
 
   return (
     <>
-      <Router>
-        <Toaster />
-        <Header
-          cartLenght={cartProducts.length}
-          cartProducts={cartProducts}
-          searchProduct={searchProduct}
-          setSearchProduct={setSearchProduct}
-        />
-        <Routes>
-          <Route
+      <Header cart={cart} />
+      {/* <Router> */}
+      {/* <Toaster /> */}
+      {/* <Header
+        cartLenght={cartProducts.length}
+        cartProducts={cartProducts}
+        searchProduct={searchProduct}
+        setSearchProduct={setSearchProduct}
+      /> */}
+      {/* <Routes> */}
+      {/* <Route
             path="/"
             exact
             element={
-              <>
-                <main className="m-auto lg:w-4/5">
-                  {/* <Order
+              <> */}
+      {/* <main className="m-auto lg:w-4/5"> */}
+      {/* <Order
                     orderProduct={orderProduct}
                     onOrderProductChange={setOrderProduct}
                   /> */}
-                  <Products
-                    products={data}
-                    searchProduct={searchProduct}
-                    orderProduct={orderProduct}
-                  />
-                </main>
-              </>
+      <Products
+        products={data}
+        searchProduct={searchProduct}
+        orderProduct={orderProduct}
+      />
+      {/* </main> */}
+      {/* </>
             }
-          ></Route>
-          <Route
-            path="/product/:product"
+          ></Route> */}
+      {/* <Route
+            path="/product/:productId"
             element={
               <main className="m-auto sm:w-4/5 lg:w-3/5">
                 <ProductInfo
@@ -419,8 +423,8 @@ export default function Home() {
                 />
               </main>
             }
-          />
-          <Route
+          /> */}
+      {/* <Route
             path="/cart/:product"
             exact
             element={
@@ -433,10 +437,10 @@ export default function Home() {
                 />
               </main>
             }
-          />
-        </Routes>
-      </Router>
-      <Footer />
+          /> */}
+      {/* </Routes> */}
+      {/* </Router> */}
+      {/* <Footer /> */}
     </>
   );
 }

@@ -1,5 +1,4 @@
 import { FiTrash2 } from "react-icons/fi";
-import calculatePrice from "./calculatePrice";
 import twoWords from "./twoWords";
 
 import "../styles/cartProduct.css";
@@ -10,7 +9,6 @@ export default function CartProduct({
   handleSumCartProduct,
   handleRemoveCartProduct,
 }) {
-  const price = calculatePrice(product.price);
   const title = `${twoWords(product.title, 0, 1)} ${
     twoWords(product.title, 1, 2)
       ? twoWords(product.title, 1, 2)
@@ -28,7 +26,7 @@ export default function CartProduct({
         />
         <h1 className="w-full text-base font-semibold text-black">{title}</h1>
         <p className="w-full text-sm font-normal text-neutral-700 bg-neutral-50 text-end">
-          R$ {price}
+          R$ {product.price}
         </p>
       </div>
 

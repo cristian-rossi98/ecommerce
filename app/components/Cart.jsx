@@ -1,8 +1,6 @@
 const Product = lazy(() => import("./FeaturedProduct"));
-import BackButton from "./BackButton";
 import CartProduct from "./CartProduct";
 import NoResult from "./NoResult";
-import calculatePrice from "./calculatePrice";
 import { lazy, Suspense } from "react";
 
 import "../styles/skeleton.css";
@@ -16,7 +14,6 @@ export default function Cart({
   const totalPrice = cartProducts.reduce((accumulator, product) => {
     return accumulator + product.price * product.quantity;
   }, 0);
-  const formatedPrice = calculatePrice(totalPrice);
 
   return (
     <section className="px-4 m-auto ">
@@ -39,7 +36,7 @@ export default function Cart({
           <div className="border-t-2 border-b-2 border-neutral-100 py-4 mb-2">
             <div className="flex justify-between">
               <p className="text-neutral-700 font-light mb-2">Subtotal</p>
-              <p className="text-neutral-700 font-light">R$ {formatedPrice}</p>
+              <p className="text-neutral-700 font-light">R$ {totalPrice}</p>
             </div>
             <div className="flex justify-between">
               <p className="text-neutral-700 font-light">Frete</p>
@@ -51,7 +48,7 @@ export default function Cart({
               <div className="flex justify-between items-start mb-12">
                 <p className="text-black font-semibold lg:text-2xl">Total</p>
                 <p className="text-black font-semibold lg:text-2xl">
-                  R$ {formatedPrice}
+                  R$ {totalPrice}
                 </p>
               </div>
               <button className="bg-black p-4 mb-10 w-full rounded-sm md:w-2/5">

@@ -1,8 +1,8 @@
 export default function Order({ orderProduct, onOrderProductChange }) {
   return (
-    <section className="w-full flex justify-end pr-10">
+    <section className="w-full flex justify-end px-8">
       <select
-        className="shadow-md"
+        className="bg-neutral-800 p-1 rounded-sm shadow-md"
         value={orderProduct}
         onChange={(e) => onOrderProductChange(e.target.value)}
       >
