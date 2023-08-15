@@ -3,11 +3,11 @@ import { BiMenuAltRight } from "react-icons/bi";
 export default function Order({ orderProduct, onOrderProductChange }) {
   return (
     <div className="w-8 h-full z-0">
-      <span className="text-neutral-800 absolute text-2xl w-8 flex justify-end z-0">
+      <span className="text-neutral-800 absolute text-2xl w-8 flex justify-end z-0 outline-none">
         <BiMenuAltRight />
       </span>
       <select
-        className="w-8 appearance-none bg-transparent text-transparent cursor-pointer relative z-10"
+        className="w-8 appearance-none bg-transparent text-transparent cursor-pointer relative z-10 outline-none"
         value={orderProduct}
         onChange={(e) => onOrderProductChange(e.target.value)}
       >

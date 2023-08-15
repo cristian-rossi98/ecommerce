@@ -28,7 +28,10 @@ export default function Header({ cart }) {
         >
           <h1 className="main-logo">e</h1>
         </a>
-        <button className="flex lg:hidden" onClick={handleCartNavigate}>
+        <button
+          className="flex lg:hidden outline-none"
+          onClick={handleCartNavigate}
+        >
           <Badge badgeContent={cart.length} color="primary">
             <BiShoppingBag className="text-neutral-800" />
           </Badge>
@@ -37,7 +40,10 @@ export default function Header({ cart }) {
       <div className="flex pt-6 lg:pt-0 w-full lg:w-2/4">
         <SearchBar handleSearchNavigate={handleSearchNavigate} />
       </div>
-      <button className="lg:flex hidden" onClick={handleCartNavigate}>
+      <button
+        className="lg:flex hidden outline-none"
+        onClick={handleCartNavigate}
+      >
         <Badge badgeContent={cart.length} color="primary">
           <BiShoppingBag className="text-neutral-800" />
         </Badge>
