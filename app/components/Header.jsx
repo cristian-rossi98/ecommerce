@@ -1,31 +1,17 @@
 "use client";
 
 import { BiShoppingBag } from "react-icons/bi";
+import { useRouter } from "next/navigation";
 import Badge from "@mui/material/Badge";
 
 import SearchBar from "./SearchBar";
 
 import "../styles/header.css";
-import { useRouter } from "next/navigation";
 
-export default function Header({
-  cartLenght,
-  cartProducts,
-  searchProduct,
-  setSearchProduct,
-  cart,
-}) {
-  // const navigates = useNavigate();
+export default function Header({ cart }) {
   const router = useRouter();
-  // const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   const handleCartNavigate = () => {
-    // const cartString = JSON.stringify(cartProducts);
-    // try {
-    //   navigates(`/cart/${btoa(cartString)}`);
-    // } catch (error) {
-    //   navigates(`/cart/${encodeURIComponent(cartString)}`);
-    // }
     router.push("/cart");
   };
 
@@ -49,11 +35,7 @@ export default function Header({
         </button>
       </div>
       <div className="flex pt-6 w-full">
-        <SearchBar
-          // searchProduct={searchProduct}
-          // onSearchProductChange={setSearchProduct}
-          handleSearchNavigate={handleSearchNavigate}
-        />
+        <SearchBar handleSearchNavigate={handleSearchNavigate} />
       </div>
     </header>
   );
