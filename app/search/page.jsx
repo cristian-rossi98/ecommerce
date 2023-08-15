@@ -65,16 +65,18 @@ export default function Page() {
     <>
       <Header cart={cart} />
       <section className="px-4 m-auto ">
-        <h1 className="text-black font-bold text-xl">
-          Pesquisa: {searchParams}
-        </h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-black font-bold text-xl">
+            Pesquisa: {searchParams}
+          </h1>
+          <Order
+            orderProduct={orderProduct}
+            onOrderProductChange={setOrderProduct}
+          />
+        </div>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12"></div>
         {sortedProducts.length ? (
           <>
-            <Order
-              orderProduct={orderProduct}
-              onOrderProductChange={setOrderProduct}
-            />
             <ul>
               {sortedProducts.map((product) => (
                 <div className="p-8">
@@ -82,8 +84,8 @@ export default function Page() {
                     key={product.id}
                     product={product}
                     classStyle={`relative flex justify-center items-center w-full h-96 cursor-pointer transition duration-200 ease-in-out hover:scale-105 hover:shadow-xl sm:w-60`}
-                    inlineStyle="rgb(245 245 245)"
-                    inlineStyleBackground="rgb(245 245 245)"
+                    inlineStyle="rgb(244 244 244)"
+                    inlineStyleBackground="rgb(244 244 244)"
                     degree={0}
                   />
                 </div>
