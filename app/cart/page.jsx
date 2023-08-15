@@ -5,7 +5,7 @@ import NoResult from "../components/NoResult";
 import CartProduct from "../components/CartProduct";
 
 import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function Page() {
   const [cart, setCart] = useState([]);
