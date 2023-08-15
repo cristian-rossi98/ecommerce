@@ -1,39 +1,10 @@
 import FeaturedProduct from "./FeaturedProduct";
 import SnapProduct from "./SnapProduct";
-// import NoResult from "./NoResult";
 
 import "../styles/product.css";
 import "../styles/snapProduct.css";
 
-export default function Products({ products, searchProduct, orderProduct }) {
-  // const filteredProducts = products.filter(
-  //   (product) =>
-  //     product.title.toLowerCase().indexOf(searchProduct.toLowerCase()) !== -1
-  // );
-
-  // let sortedProducts = filteredProducts;
-
-  // switch (orderProduct) {
-  //   case "1":
-  //     sortedProducts = [...filteredProducts].sort((a, b) => {
-  //       return a.title.localeCompare(b.title);
-  //     });
-  //     break;
-  //   case "2":
-  //     sortedProducts = [...filteredProducts].sort((a, b) => {
-  //       return b.title.localeCompare(a.title);
-  //     });
-  //     break;
-  //   case "3":
-  //     sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
-  //     break;
-  //   case "4":
-  //     sortedProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
-  //     break;
-  //   default:
-  //     break;
-  // }
-
+export default function Products({ products }) {
   const productColors = [
     "rgb(55 48 163)",
     "rgb(0 0 0)",
