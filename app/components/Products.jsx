@@ -102,7 +102,7 @@ export default function Products({ products }) {
             ))}
           </div>
         </section>
-        <ul className="flex justify-center flex-wrap p-4">
+        <ul className="flex justify-center flex-wrap p-4 lg:justify-start">
           {featuredProductsWomen.map((product, index) => (
             <div className="px-8 py-4 w-full lg:w-1/2 xl:w-1/4 lg:px-4 lg:py-4">
               <FeaturedProduct
