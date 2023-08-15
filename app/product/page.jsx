@@ -115,7 +115,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="px-4 lg:w-2/5">
+        <div className="px-8 lg:w-2/5">
           <div className="mb-16 mt-8 lg:mt-0">
             <h1 className="text-lg font-semibold text-neutral-800 text-justify lg:text-3xl lg:font-bold">
               {product.title}
