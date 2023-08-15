@@ -13,16 +13,24 @@ export default function FeaturedProduct({
   const router = useRouter();
 
   return (
-    <>
-      <li
-        onClick={() => router.push(`/product?info=${product.id}`)}
-        className={classStyle}
+    <li
+      onClick={() => router.push(`/product?info=${product.id}`)}
+      className={classStyle}
+      // style={{
+      //   backgroundImage: `repeating-linear-gradient(${degree}deg, ${inlineStyle}, ${inlineStyle} 10px, ${inlineStyleBackground} 10px, ${inlineStyleBackground} 20px)`,
+      //   backgroundSize: "22px 22px",
+      // }}
+    >
+      <div
+        // onClick={() => router.push(`/product?info=${product.id}`)}
+        // className={classStyle}
+        className="h-full w-full product-background"
         style={{
           backgroundImage: `repeating-linear-gradient(${degree}deg, ${inlineStyle}, ${inlineStyle} 10px, ${inlineStyleBackground} 10px, ${inlineStyleBackground} 20px)`,
           backgroundSize: "22px 22px",
         }}
       >
-        <div>
+        <div className="flex items-center justify-center h-full w-full">
           <img
             className="product-image"
             src={product.image}
@@ -54,7 +62,7 @@ export default function FeaturedProduct({
             R$ {product.price}
           </p>
         </div>
-      </li>
-    </>
+      </div>
+    </li>
   );
 }

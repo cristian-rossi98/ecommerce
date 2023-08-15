@@ -43,7 +43,7 @@ export default function Products({ products }) {
             <FeaturedProduct
               key={product.id}
               product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 product-list`}
+              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list`}
               inlineStyle={productColors[index % productColors.length]}
               inlineStyleBackground={
                 productColorsBackground[index % productColorsBackground.length]
@@ -86,7 +86,7 @@ export default function Products({ products }) {
             <FeaturedProduct
               key={product.id}
               product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 product-list`}
+              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list`}
               inlineStyle={productColors[index % productColors.length]}
               inlineStyleBackground={
                 productColorsBackground[index % productColorsBackground.length]
@@ -108,7 +108,7 @@ export default function Products({ products }) {
               <FeaturedProduct
                 key={product.id}
                 product={product}
-                classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out product-list`}
+                classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out overflow-hidden relative product-background`}
                 inlineStyle="rgb(244 244 244)"
                 inlineStyleBackground="rgb(244 244 244)"
                 degree={degree[index % degree.length]}
