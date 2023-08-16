@@ -21,7 +21,7 @@ export default function SearchBar({ handleSearchNavigate }) {
           onChange={(e) => handleInputChange(e.target.value)}
         />
         <button
-          className="absolute inset-y-0 right-0 flex items-center px-3 pt-1 rounded-r-sm rounded-br-sm text-neutral-500 hover:bg-neutral-300 hover:text-neutral-800"
+          className="absolute right-0 -top-1 bottom-0 flex items-center px-3 pt-1 rounded-r-sm rounded-br-sm text-neutral-500 hover:bg-neutral-300 hover:text-neutral-800"
           onClick={() => handleSearchNavigate("Enter", inputValue)}
         >
           <BiSearchAlt2 className="text-lg " />
