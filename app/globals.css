@@ -35,6 +35,10 @@ main {
   min-height: 55vh;
 }
 
+strong {
+  font-weight: 600;
+}
+
 /* select {
   background-color: #ef4444;
   border-radius: 2px;

@@ -3,12 +3,16 @@
 import Header from "../components/Header";
 import NoResult from "../components/NoResult";
 import CartProduct from "../components/CartProduct";
+import Modal from "../components/Modal";
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
+import { MdContactPage } from "react-icons/md";
 
 export default function Page() {
   const [cart, setCart] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
@@ -44,8 +48,47 @@ export default function Page() {
     localStorage.setItem("cart", JSON.stringify(updateCart));
   };
 
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <>
+      <Modal isOpen={modalIsOpen} onClose={closeModal}>
+        <h2 className="text-lg font-bold mb-4 text-black">
+          Compra Simulada com Sucesso
+        </h2>
+        <p className="text-black text-justify">
+          Obrigado por escolher nossa loja para simular sua compra. Fique
+          tranquilo, esta é apenas uma demonstração para o meu portfólio.{" "}
+          <strong>
+            Não será feita nenhuma cobrança e nenhum produto será enviado.
+          </strong>
+          <br></br>
+          <br></br>
+          Obrigado por ter chegado até aqui! ♥︎
+          <br></br>
+          <br></br>
+        </p>
+        <p className="flex justify-center">
+          <a
+            href="https://www.linkedin.com/in/cristian-rossi-ccosta/"
+            target="_blank"
+          >
+            <AiFillLinkedin className="text-black text-3xl mr-2" />
+          </a>
+          <a href="https://github.com/cristian-rossi98" target="_blank">
+            <AiFillGithub className="text-black text-3xl mr-2" />
+          </a>
+          <a href="https://cristian-rossi98.github.io/" target="_blank">
+            <MdContactPage className="text-black text-3xl" />
+          </a>
+        </p>
+      </Modal>
       <Header cart={cart} />
       <section className="px-8 m-auto ">
         <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
@@ -85,7 +128,10 @@ export default function Page() {
                     R$ {totalPrice.toFixed(2)}
                   </p>
                 </div>
-                <button className="bg-black p-4 mb-10 w-full rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black">
+                <button
+                  onClick={openModal}
+                  className="bg-black p-4 mb-10 w-full rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black"
+                >
                   FINALIZAR COMPRA
                 </button>
               </div>

@@ -27,7 +27,7 @@ export default function Header({ cart }) {
   };
 
   return (
-    <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center items-start py-6 px-8 bg-neutral-50 text-3xl sticky top-0 z-50">
+    <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center items-start py-6 px-8 bg-neutral-50 text-3xl sticky top-0 z-40">
       <div className="flex justify-between w-full lg:w-auto">
         <a
           href="/"
