@@ -53,11 +53,12 @@ export default function Page() {
         {cart.length ? (
           <>
             <ul className="w-full flex flex-col justify-evenly items-center">
-              {cart.map((product) => (
+              {cart.map((product, index) => (
                 <CartProduct
                   key={product.id}
                   product={product}
-                  cartPage={true}
+                  cartLenght={cart.length}
+                  index={index}
                   handleRemoveCartProduct={handleRemoveCartProduct}
                   handleSubCartProduct={handleSubCartProduct}
                   handleSumCartProduct={handleSumCartProduct}

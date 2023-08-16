@@ -3,6 +3,7 @@
 import { BiShoppingBag } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import Badge from "@mui/material/Badge";
+import toast from "react-hot-toast";
 
 import SearchBar from "./SearchBar";
 
@@ -16,7 +17,13 @@ export default function Header({ cart }) {
   };
 
   const handleSearchNavigate = (key, value) => {
-    key === "Enter" && router.push(`/search?search=${value}`);
+    if (key === "Enter") {
+      if (value.trim() === "") {
+        toast.error("Digite o produto que deseja buscar");
+        return;
+      }
+      router.push(`/search?search=${value.trim()}`);
+    }
   };
 
   return (

@@ -5,6 +5,8 @@ import "../styles/cartProduct.css";
 
 export default function CartProduct({
   product,
+  cartLenght,
+  index,
   handleSubCartProduct,
   handleSumCartProduct,
   handleRemoveCartProduct,
@@ -60,7 +62,9 @@ export default function CartProduct({
           <FiTrash2 />
         </button>
       </div>
-      <div className="border-t-2 border-neutral-100 mt-8"></div>
+      {cartLenght !== index + 1 && (
+        <div className="border-t-2 border-neutral-100 mt-8"></div>
+      )}
     </li>
   );
 }
