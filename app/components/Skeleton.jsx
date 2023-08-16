@@ -3,7 +3,7 @@ import { BiShoppingBag } from "react-icons/bi";
 import SearchBar from "./SearchBar";
 import "../styles/skeleton.css";
 
-export default function Skeleton({ itemsNumber }) {
+export default function Skeleton({ itemsNumber, children }) {
   return (
     <>
       <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center items-start py-4 px-8 bg-neutral-50 text-3xl sticky top-0 z-50">
@@ -26,6 +26,7 @@ export default function Skeleton({ itemsNumber }) {
         </button>
       </header>
       <main className="">
+        {children}
         <div className="w-full flex justify-center">
           <ul className="flex justify-center flex-wrap lg:mt-24">
             {[...Array(itemsNumber)].map((_, index) => (

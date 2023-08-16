@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import NoResult from "../components/NoResult";
 import CartProduct from "../components/CartProduct";
 import Modal from "../components/Modal";
+import Skeleton from "../components/Skeleton";
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -13,10 +14,23 @@ import { MdContactPage } from "react-icons/md";
 export default function Page() {
   const [cart, setCart] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    setLoading(false);
   }, []);
+
+  if (loading) {
+    return (
+      <Skeleton itemsNumber={1}>
+        <div className="px-8 m-auto">
+          <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
+          <div className="border-t-2 border-neutral-200 mt-4 mb-12"></div>
+        </div>
+      </Skeleton>
+    );
+  }
 
   const totalPrice = cart.reduce((accumulator, product) => {
     return accumulator + product.price * product.quantity;
