@@ -1,6 +1,7 @@
 .product-image-info {
   /* max-width: 220px; */
-  max-height: 400px;
+  /* max-height: 400px; */
+  scale: 70%;
 }
 
 @media (min-width: 768px) {

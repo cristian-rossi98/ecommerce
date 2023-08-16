@@ -1,4 +1,3 @@
-// import { useNavigate } from "react-router-dom";
 import { useRouter } from "next/navigation";
 import "../styles/product.css";
 import twoWords from "./twoWords";
@@ -16,14 +15,8 @@ export default function FeaturedProduct({
     <li
       onClick={() => router.push(`/product?info=${product.id}`)}
       className={classStyle}
-      // style={{
-      //   backgroundImage: `repeating-linear-gradient(${degree}deg, ${inlineStyle}, ${inlineStyle} 10px, ${inlineStyleBackground} 10px, ${inlineStyleBackground} 20px)`,
-      //   backgroundSize: "22px 22px",
-      // }}
     >
       <div
-        // onClick={() => router.push(`/product?info=${product.id}`)}
-        // className={classStyle}
         className="h-full w-full product-background"
         style={{
           backgroundImage: `repeating-linear-gradient(${degree}deg, ${inlineStyle}, ${inlineStyle} 10px, ${inlineStyleBackground} 10px, ${inlineStyleBackground} 20px)`,

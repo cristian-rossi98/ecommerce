@@ -19,12 +19,14 @@ export default function SnapProduct({ product }) {
         <h1 className="absolute inline py-2 px-12 text-white bg-slate-600 text-xs font-medium product-description">
           R$ {product.price}
         </h1>
-        <img
-          className="product-image mx-28"
-          src={product.image}
-          alt={product.title}
-          rel="preload"
-        />
+        <div className=" h-40 md:h-56 lg:h-72 flex justify-center">
+          <img
+            className="mx-28"
+            src={product.image}
+            alt={product.title}
+            rel="preload"
+          />
+        </div>
       </div>
     </>
   );

@@ -87,7 +87,7 @@ export default function Products({ products }) {
             />
           ))}
         </ul>
-        <section className="py-8 w-full bg-neutral-950">
+        <section className="pt-12 w-full bg-neutral-950">
           <div className="relative w-full flex items-center gap-6 snap-x snap-mandatory overflow-x-auto pb-14">
             {snapProductsElectronics.map((product) => (
               <SnapProduct key={product.id} product={product} />
