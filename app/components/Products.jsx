@@ -5,19 +5,11 @@ import "../styles/product.css";
 import "../styles/snapProduct.css";
 
 export default function Products({ products }) {
-  const productColors = [
-    "rgb(55 48 163)",
-    "rgb(0 0 0)",
-    "rgb(134 25 143)",
-    "rgb(0 0 0)",
-  ];
-  const productColorsBackground = [
-    "rgb(55, 48, 163, 0.95)",
-    "rgb(0, 0, 0, 0.95)",
-    "rgb(134, 25, 143, 0.95)",
-    "rgb(0, 0, 0, 0.95)",
-  ];
-  const degree = ["45", "135"];
+  const colorsMen = ["rgb(100 116 139)"];
+  const backgroundMen = ["rgb(100, 116, 139, 0.975)"];
+  const colorsJewelery = ["rgb(15 23 42)"];
+  const backgroundJewelery = ["rgb(15, 23, 42, 0.99)"];
+  const degree = ["40", "130"];
 
   const featuredProductsMen = products.filter(
     (product) => product.category === "men's clothing"
@@ -44,9 +36,9 @@ export default function Products({ products }) {
               key={product.id}
               product={product}
               classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list`}
-              inlineStyle={productColors[index % productColors.length]}
+              inlineStyle={colorsMen[index % colorsMen.length]}
               inlineStyleBackground={
-                productColorsBackground[index % productColorsBackground.length]
+                backgroundMen[index % backgroundMen.length]
               }
               degree={degree[index % degree.length]}
             />
@@ -87,9 +79,9 @@ export default function Products({ products }) {
               key={product.id}
               product={product}
               classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list`}
-              inlineStyle={productColors[index % productColors.length]}
+              inlineStyle={colorsJewelery[index % colorsJewelery.length]}
               inlineStyleBackground={
-                productColorsBackground[index % productColorsBackground.length]
+                backgroundJewelery[index % backgroundJewelery.length]
               }
               degree={degree[index % degree.length]}
             />

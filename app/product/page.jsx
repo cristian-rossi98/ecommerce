@@ -80,7 +80,7 @@ export default function Page() {
     <>
       <Header cart={cart} />
       <section className="w-full lg:flex">
-        <div className="bg-indigo-800 relative flex justify-center items-center w-full lg:w-3/5 h-auto py-20 transition duration-200 ease-in-out">
+        <div className="bg-slate-800 relative flex justify-center items-center w-full lg:w-3/5 h-auto py-20 transition duration-200 ease-in-out">
           <div className="flex items-center justify-center">
             <img
               className="product-image-info"
