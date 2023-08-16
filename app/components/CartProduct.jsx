@@ -35,7 +35,7 @@ export default function CartProduct({
       </div>
 
       <div className="flex justify-between w-full">
-        <div className="w-12 mr-4 lg:mr-32"></div>
+        <div className="w-12 mr-8 md:mr-32"></div>
         <div className="w-full">
           <div className="text-black flex flex-row justify-between w-20 rounded-sm my-2">
             <button
