@@ -4,22 +4,31 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Products from "./components/Products";
 import Skeleton from "./components/Skeleton";
+import NoResult from "./components/NoResult";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+
     fetch("https://json-server-rose-one.vercel.app/products")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      })
+      .then((responseData) => {
+        setData(responseData);
         setLoading(false);
       })
-      .catch((error) => {
-        alert("Erro ao buscar dados: ", error);
+      .catch(() => {
+        setError(true);
         setLoading(false);
       });
   }, []);
@@ -31,7 +40,11 @@ export default function Home() {
   return (
     <>
       <Header cart={cart} />
-      <Products products={data} />
+      {error ? (
+        <NoResult value="Erro ao buscar dados! Por favor recarregue a página" />
+      ) : (
+        <Products products={data} />
+      )}
     </>
   );
 }

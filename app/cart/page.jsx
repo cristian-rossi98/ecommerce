@@ -26,7 +26,7 @@ export default function Page() {
       <Skeleton itemsNumber={1}>
         <div className="px-8 m-auto">
           <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
-          <div className="border-t-2 border-neutral-200 mt-4 mb-12"></div>
+          <div className="border-t-2 border-neutral-200 mt-4"></div>
         </div>
       </Skeleton>
     );

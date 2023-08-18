@@ -28,7 +28,7 @@ export default function Skeleton({ itemsNumber, children }) {
       <main className="">
         {children}
         <div className="w-full flex justify-center">
-          <ul className="flex justify-center flex-wrap lg:mt-24">
+          <ul className="flex justify-center flex-wrap ">
             {[...Array(itemsNumber)].map((_, index) => (
               <li
                 key={index}
