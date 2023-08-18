@@ -1,7 +1,7 @@
 import { BiShoppingBag } from "react-icons/bi";
 
-import SearchBar from "./SearchBar";
-import "../styles/skeleton.css";
+import SearchBar from "../header/SearchBar";
+import "./skeleton.css";
 
 export default function Skeleton({ itemsNumber, children }) {
   return (

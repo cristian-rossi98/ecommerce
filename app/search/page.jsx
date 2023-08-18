@@ -3,13 +3,13 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import Header from "../components/Header";
-import FeaturedProduct from "../components/FeaturedProduct";
-import Order from "../components/Order";
+import Header from "../components/header/Header";
+import FeaturedProduct from "../components/products/FeaturedProduct";
+import Order from "./components/Order";
 import NoResult from "../components/NoResult";
-import Skeleton from "../components/Skeleton";
+import Skeleton from "../components/skeleton/Skeleton";
 
-export default function Page() {
+export default function Search() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams().get("search");

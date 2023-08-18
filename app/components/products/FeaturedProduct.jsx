@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
-import "../styles/product.css";
-import twoWords from "./twoWords";
+import "./product.css";
+import twoWords from "../../utils/twoWords";
 
 export default function FeaturedProduct({
   product,
@@ -29,6 +29,7 @@ export default function FeaturedProduct({
             src={product.image}
             alt={product.title}
             rel="preload"
+            loading="lazy"
           />
         </div>
         <div className="absolute top-0 left-0">

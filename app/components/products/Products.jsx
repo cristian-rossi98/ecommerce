@@ -1,8 +1,8 @@
 import FeaturedProduct from "./FeaturedProduct";
 import SnapProduct from "./SnapProduct";
 
-import "../styles/product.css";
-import "../styles/snapProduct.css";
+import "./product.css";
+import "./snapProduct.css";
 
 export default function Products({ products }) {
   const colorsMen = ["rgb(100 116 139)"];

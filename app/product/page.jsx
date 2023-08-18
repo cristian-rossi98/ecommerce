@@ -4,14 +4,14 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-import Header from "../components/Header";
-import Rating from "../components/Rating";
-import Skeleton from "../components/Skeleton";
-import twoWords from "../components/twoWords";
+import Header from "../components/header/Header";
+import Rating from "../components/products/Rating";
+import Skeleton from "../components/skeleton/Skeleton";
+import twoWords from "../utils/twoWords";
 
 import "./styles/productInfo.css";
 
-export default function Page() {
+export default function Product() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams().get("info");

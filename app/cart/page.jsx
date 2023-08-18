@@ -1,17 +1,17 @@
 "use client";
 
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import NoResult from "../components/NoResult";
-import CartProduct from "../components/CartProduct";
+import CartProduct from "./components/CartProduct";
 import Modal from "../components/Modal";
-import Skeleton from "../components/Skeleton";
+import Skeleton from "../components/skeleton/Skeleton";
 
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { MdContactPage } from "react-icons/md";
 
-export default function Page() {
+export default function Cart() {
   const [cart, setCart] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);

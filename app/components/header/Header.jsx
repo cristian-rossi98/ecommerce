@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 import SearchBar from "./SearchBar";
 
-import "../styles/header.css";
+import "./header.css";
 
 export default function Header({ cart }) {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import { FiTrash2 } from "react-icons/fi";
-import twoWords from "./twoWords";
+import twoWords from "../../utils/twoWords";
 
-import "../styles/cartProduct.css";
+import "./cartProduct.css";
 
 export default function CartProduct({
   product,
@@ -25,6 +25,7 @@ export default function CartProduct({
           src={product.image}
           alt={product.title}
           rel="preload"
+          loading="lazy"
         />
         <h1 className="w-full text-base font-semibold text-black lg:text-2xl lg:font-bold">
           {title}

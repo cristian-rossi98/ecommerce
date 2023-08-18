@@ -1,8 +1,8 @@
 import { useRouter } from "next/navigation";
 
-import "../styles/snapProduct.css";
+import "./snapProduct.css";
 
-import twoWords from "./twoWords";
+import twoWords from "../../utils/twoWords";
 
 export default function SnapProduct({ product }) {
   const router = useRouter();
@@ -25,6 +25,7 @@ export default function SnapProduct({ product }) {
             src={product.image}
             alt={product.title}
             rel="preload"
+            loading="lazy"
           />
         </div>
       </div>
