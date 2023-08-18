@@ -5,19 +5,28 @@ import "./product.css";
 import "./snapProduct.css";
 
 export default function Products({ products }) {
-  const colorsMen = ["rgb(100 116 139)"];
-  const backgroundMen = ["rgb(100, 116, 139, 0.975)"];
-  const colorsJewelery = ["rgb(15 23 42)"];
-  const backgroundJewelery = ["rgb(15, 23, 42, 0.99)"];
+  const colors = {
+    men: ["rgb(100 116 139)"],
+    jewelery: ["rgb(15 23 42)"],
+    women: ["rgb(244 244 244)"],
+  };
+
+  const backgrounds = {
+    men: ["rgb(100, 116, 139, 0.975)"],
+    jewelery: ["rgb(15, 23, 42, 0.99)"],
+    women: ["rgb(244 244 244)"],
+  };
+
   const degree = ["40", "130"];
 
-  const featuredProductsMen = products.filter(
-    (product) => product.category === "men's clothing"
-  );
-
-  const featuredProductsJewelery = products.filter(
-    (product) => product.category === "jewelery"
-  );
+  const classes = {
+    men: [
+      "relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list",
+    ],
+    jewelery: [
+      "relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list",
+    ],
+  };
 
   const snapProductsElectronics = products.filter(
     (product) => product.category === "electronics"
@@ -27,22 +36,31 @@ export default function Products({ products }) {
     (product) => product.category === "women's clothing"
   );
 
+  const featuredProductsByCategory = {
+    men: products.filter((product) => product.category === "men's clothing"),
+    jewelery: products.filter((product) => product.category === "jewelery"),
+  };
+
+  const renderFeaturedProducts = (category) => {
+    return featuredProductsByCategory[category].map((product, index) => (
+      <FeaturedProduct
+        key={product.id}
+        product={product}
+        classStyle={classes[category]}
+        inlineStyle={colors[category][index % colors[category].length]}
+        inlineStyleBackground={
+          backgrounds[category][index % backgrounds[category].length]
+        }
+        degree={degree[index % degree.length]}
+      />
+    ));
+  };
+
   return (
     <>
       <div className="w-full flex justify-center flex-col">
         <ul className="flex justify-center flex-wrap lg:justify-start">
-          {featuredProductsMen.map((product, index) => (
-            <FeaturedProduct
-              key={product.id}
-              product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list`}
-              inlineStyle={colorsMen[index % colorsMen.length]}
-              inlineStyleBackground={
-                backgroundMen[index % backgroundMen.length]
-              }
-              degree={degree[index % degree.length]}
-            />
-          ))}
+          {renderFeaturedProducts("men")}
         </ul>
         <ul className="flex justify-center flex-wrap">
           <li className="bg-black px-8 lg:px-16 lg:py-16 pb-16 pt-8 lg:flex lg:flex-row">
@@ -74,18 +92,7 @@ export default function Products({ products }) {
           </li>
         </ul>
         <ul className="flex justify-center flex-wrap lg:justify-start">
-          {featuredProductsJewelery.map((product, index) => (
-            <FeaturedProduct
-              key={product.id}
-              product={product}
-              classStyle={`relative flex justify-center items-center w-full h-96 h-44rem cursor-pointer transition duration-200 ease-in-out lg:w-1/2 xl:w-1/4 overflow-hidden relative product-list`}
-              inlineStyle={colorsJewelery[index % colorsJewelery.length]}
-              inlineStyleBackground={
-                backgroundJewelery[index % backgroundJewelery.length]
-              }
-              degree={degree[index % degree.length]}
-            />
-          ))}
+          {renderFeaturedProducts("jewelery")}
         </ul>
         <section className="pt-12 w-full bg-neutral-950">
           <div className="relative w-full flex items-center gap-6 snap-x snap-mandatory overflow-x-auto pb-14">
