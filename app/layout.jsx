@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+
+import { ReduxProvider } from "./redux/provider";
 
 import Footer from "./components/footer/Footer";
 
@@ -15,10 +17,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body className={inter.className}>
-        <Toaster />
-        {children}
-        <Footer />
+        <ReduxProvider>
+          <Toaster />
+          {children}
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   );
 }
+
+// {/* <Toaster /> */}
+// {/* <Footer /> */}
