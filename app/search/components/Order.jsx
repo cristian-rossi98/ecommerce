@@ -1,22 +1,53 @@
 import { BiMenuAltRight } from "react-icons/bi";
 
-export default function Order({ orderProduct, onOrderProductChange }) {
+export default function Order({
+  orderProduct,
+  onOrderProductChange,
+  handleOrder,
+}) {
   return (
-    <div className="h-full z-0 bg-neutral-800 text-neutral-50 border-2 border-neutral-800 rounded-sm hover:bg-neutral-50 hover:text-neutral-800">
-      <span className=" absolute text-2xl w-8 h-7 flex justify-end items-center z-0 outline-none">
-        <BiMenuAltRight />
-      </span>
-      <select
-        className="w-8 h-7 appearance-none bg-transparent text-transparent cursor-pointer relative z-10 outline-none"
-        value={orderProduct}
-        onChange={(e) => onOrderProductChange(e.target.value)}
+    <div className="text-black">
+      <h1 className="text-xl font-semibold mb-2">Ordenar</h1>
+      <button
+        className={`mb-1 hover:underline ${
+          orderProduct === 0 ? "underline" : "hover:underline"
+        }`}
+        onClick={() => handleOrder(0)}
       >
-        <option value="0">Padrão</option>
-        <option value="1">Nome A-Z</option>
-        <option value="2">Nome Z-A</option>
-        <option value="3">Menores Preços</option>
-        <option value="4">Maiores Preços</option>
-      </select>
+        Relevantes
+      </button>
+      <button
+        className={`mb-1 hover:underline ${
+          orderProduct === 1 ? "underline" : "hover:underline"
+        }`}
+        onClick={() => handleOrder(1)}
+      >
+        Nome A-Z
+      </button>
+      <button
+        className={`mb-1 hover:underline ${
+          orderProduct === 2 ? "underline" : "hover:underline"
+        }`}
+        onClick={() => handleOrder(2)}
+      >
+        Nome Z-A
+      </button>
+      <button
+        className={`mb-1 hover:underline ${
+          orderProduct === 3 ? "underline" : "hover:underline"
+        }`}
+        onClick={() => handleOrder(3)}
+      >
+        Menores Preços
+      </button>
+      <button
+        className={`mb-1 hover:underline ${
+          orderProduct === 4 ? "underline" : "hover:underline"
+        }`}
+        onClick={() => handleOrder(4)}
+      >
+        Maiores Preços
+      </button>
     </div>
   );
 }

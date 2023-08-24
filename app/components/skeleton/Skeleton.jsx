@@ -25,7 +25,7 @@ export default function Skeleton({ itemsNumber, children }) {
           <BiShoppingBag className="text-neutral-800" />
         </button>
       </header> */}
-      <main className="">
+      <main className="px-8">
         {children}
         <div className="w-full flex justify-center">
           <ul className="flex justify-center flex-wrap ">

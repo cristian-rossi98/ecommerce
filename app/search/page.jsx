@@ -14,7 +14,7 @@ export default function Search() {
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams().get("search");
   const [cart, setCart] = useState([]);
-  const [orderProduct, setOrderProduct] = useState("0");
+  const [orderProduct, setOrderProduct] = useState(0);
   const filteredProducts = product.filter(
     (product) =>
       product.title.toLowerCase().indexOf(searchParams.toLowerCase()) !== -1
@@ -38,23 +38,28 @@ export default function Search() {
     return <Skeleton itemsNumber={1} />;
   }
 
+  const handleOrder = (value) => {
+    setOrderProduct(value);
+    console.log(orderProduct);
+  };
+
   let sortedProducts = filteredProducts;
 
   switch (orderProduct) {
-    case "1":
+    case 1:
       sortedProducts = [...filteredProducts].sort((a, b) => {
         return a.title.localeCompare(b.title);
       });
       break;
-    case "2":
+    case 2:
       sortedProducts = [...filteredProducts].sort((a, b) => {
         return b.title.localeCompare(a.title);
       });
       break;
-    case "3":
+    case 3:
       sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
       break;
-    case "4":
+    case 4:
       sortedProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
       break;
     default:
@@ -66,20 +71,32 @@ export default function Search() {
       {/* <Header cart={cart} /> */}
       <section className="m-auto ">
         <div className="flex justify-between items-center px-8">
-          <h1 className="text-black font-bold text-xl overflow-hidden text-ellipsis">
-            Resultados para: {searchParams}
+          <h1 className="text-black text-xl overflow-hidden text-ellipsis">
+            Mostrando {sortedProducts.length}
+            {sortedProducts.length > 1 ? (
+              <span> resultados </span>
+            ) : (
+              <span> resultado </span>
+            )}
+            para
+            <span> "</span>
+            <span className="font-semibold">{searchParams}</span>
+            <span>"</span>
           </h1>
-          <Order
-            orderProduct={orderProduct}
-            onOrderProductChange={setOrderProduct}
-          />
         </div>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12 mx-8"></div>
         {sortedProducts.length ? (
-          <>
-            <ul className="flex justify-center flex-wrap px-4 lg:justify-start">
+          <div className="flex px-8">
+            <div className="text-black w-2/12 py-4">
+              <h1 className="text-xl font-semibold mb-2">Categorias</h1>
+              <button className="mb-1 w-full text-left">Eletrônicos</button>
+              <button className="mb-1 w-full text-left">Feminino</button>
+              <button className="mb-1 w-full text-left">Jóias</button>
+              <button className="mb-1 w-full text-left">Masculino</button>
+            </div>
+            <ul className="flex justify-center w-8/12 flex-wrap px-4 lg:justify-start">
               {sortedProducts.map((product) => (
-                <div className="px-4 py-4 w-full lg:w-1/2 xl:w-1/4 lg:py-4">
+                <div className="py-4 w-full lg:w-1/2 lg:px-4">
                   <FeaturedProduct
                     key={product.id}
                     product={product}
@@ -91,7 +108,14 @@ export default function Search() {
                 </div>
               ))}
             </ul>
-          </>
+            <div className="w-2/12 py-4">
+              <Order
+                handleOrder={setOrderProduct}
+                orderProduct={orderProduct}
+                // onOrderProductChange={setOrderProduct}
+              />
+            </div>
+          </div>
         ) : (
           <NoResult value="Nenhum produto encontrado" />
         )}
