@@ -4,4 +4,10 @@
   font-family: 'Borel';
   padding-top: 12px;
   color: white;
+  user-select: none;
+}
+
+.main-greetings {
+  font-family: 'Borel';
+  user-select: none;
 }

@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: []
+  products: [],
+  totalPrice: 0,
 }
 
 const cartSlice = createSlice({
@@ -30,7 +31,6 @@ const cartSlice = createSlice({
         ? { ...product, quantity: product.quantity + 1}
         : product
       )
-      console.log('log: ', state.products);
     },
     decreaseProductQuantity: (state, action) => {
       state.products = state.products.map((product) =>
