@@ -9,7 +9,7 @@ export default function Order({
     <div className="text-black">
       <h1 className="text-xl font-semibold mb-2">Ordenar</h1>
       <button
-        className={`mb-1 hover:underline ${
+        className={`mb-1 hover:underline w-full text-left ${
           orderProduct === 0 ? "underline" : "hover:underline"
         }`}
         onClick={() => handleOrder(0)}
@@ -17,7 +17,7 @@ export default function Order({
         Relevantes
       </button>
       <button
-        className={`mb-1 hover:underline ${
+        className={`mb-1 hover:underline w-full text-left ${
           orderProduct === 1 ? "underline" : "hover:underline"
         }`}
         onClick={() => handleOrder(1)}
@@ -25,7 +25,7 @@ export default function Order({
         Nome A-Z
       </button>
       <button
-        className={`mb-1 hover:underline ${
+        className={`mb-1 hover:underline w-full text-left ${
           orderProduct === 2 ? "underline" : "hover:underline"
         }`}
         onClick={() => handleOrder(2)}
@@ -33,7 +33,7 @@ export default function Order({
         Nome Z-A
       </button>
       <button
-        className={`mb-1 hover:underline ${
+        className={`mb-1 hover:underline w-full text-left ${
           orderProduct === 3 ? "underline" : "hover:underline"
         }`}
         onClick={() => handleOrder(3)}
@@ -41,7 +41,7 @@ export default function Order({
         Menores Preços
       </button>
       <button
-        className={`mb-1 hover:underline ${
+        className={`mb-1 hover:underline w-full text-left ${
           orderProduct === 4 ? "underline" : "hover:underline"
         }`}
         onClick={() => handleOrder(4)}
