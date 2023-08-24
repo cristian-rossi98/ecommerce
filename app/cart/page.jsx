@@ -7,17 +7,23 @@ import Modal from "../components/Modal";
 import Skeleton from "../components/skeleton/Skeleton";
 
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { MdContactPage } from "react-icons/md";
+import { useSelector } from "react-redux";
+
+import { selectProductsTotalPrice } from "../redux/cart/selector";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { products } = useSelector((reducer) => reducer.cartReducer);
+  // setCart(products);
+  const totalPrice = useSelector(selectProductsTotalPrice);
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    // setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    // setCart(products);
     setLoading(false);
   }, []);
 
@@ -32,35 +38,35 @@ export default function Cart() {
     );
   }
 
-  const totalPrice = cart.reduce((accumulator, product) => {
-    return accumulator + product.price * product.quantity;
-  }, 0);
+  // const totalPrice = products.reduce((accumulator, product) => {
+  //   return accumulator + product.price * product.quantity;
+  // }, 0);
 
-  const handleRemoveCartProduct = (productId) => {
-    const updateCart = cart.filter((product) => product.id !== productId);
+  // const handleRemoveCartProduct = (productId) => {
+  //   const updateCart = cart.filter((product) => product.id !== productId);
 
-    setCart(updateCart);
-    localStorage.setItem("cart", JSON.stringify(updateCart));
-    toast.success("Produto removido do carrinho");
-  };
+  //   setCart(updateCart);
+  //   localStorage.setItem("cart", JSON.stringify(updateCart));
+  //   toast.success("Produto removido do carrinho");
+  // };
 
-  const handleSubCartProduct = (product) => {
-    const updateCart = cart.map((item) =>
-      item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
-    );
+  // const handleSubCartProduct = (product) => {
+  //   const updateCart = cart.map((item) =>
+  //     item.id === product.id ? { ...item, quantity: item.quantity - 1 } : item
+  //   );
 
-    setCart(updateCart);
-    localStorage.setItem("cart", JSON.stringify(updateCart));
-  };
+  //   setCart(updateCart);
+  //   localStorage.setItem("cart", JSON.stringify(updateCart));
+  // };
 
-  const handleSumCartProduct = (product) => {
-    const updateCart = cart.map((item) =>
-      item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
-    );
+  // const handleSumCartProduct = (product) => {
+  //   const updateCart = cart.map((item) =>
+  //     item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+  //   );
 
-    setCart(updateCart);
-    localStorage.setItem("cart", JSON.stringify(updateCart));
-  };
+  //   setCart(updateCart);
+  //   localStorage.setItem("cart", JSON.stringify(updateCart));
+  // };
 
   const openModal = () => {
     setModalIsOpen(true);
@@ -103,22 +109,22 @@ export default function Cart() {
           </a>
         </p>
       </Modal>
-      <Header cart={cart} />
+      {/* <Header cart={cart} /> */}
       <section className="px-8 m-auto ">
         <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12"></div>
-        {cart.length ? (
+        {products.length ? (
           <>
             <ul className="w-full flex flex-col justify-evenly items-center">
-              {cart.map((product, index) => (
+              {products.map((product, index) => (
                 <CartProduct
                   key={product.id}
                   product={product}
-                  cartLenght={cart.length}
+                  cartLenght={products.length}
                   index={index}
-                  handleRemoveCartProduct={handleRemoveCartProduct}
-                  handleSubCartProduct={handleSubCartProduct}
-                  handleSumCartProduct={handleSumCartProduct}
+                  // handleRemoveCartProduct={handleRemoveCartProduct}
+                  // handleSubCartProduct={handleSubCartProduct}
+                  // handleSumCartProduct={handleSumCartProduct}
                 />
               ))}
             </ul>

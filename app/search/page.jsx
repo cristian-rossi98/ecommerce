@@ -63,7 +63,7 @@ export default function Search() {
 
   return (
     <>
-      <Header cart={cart} />
+      {/* <Header cart={cart} /> */}
       <section className="m-auto ">
         <div className="flex justify-between items-center px-8">
           <h1 className="text-black font-bold text-xl overflow-hidden text-ellipsis">

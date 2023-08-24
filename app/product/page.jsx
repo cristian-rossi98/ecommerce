@@ -11,12 +11,17 @@ import twoWords from "../utils/twoWords";
 
 import "./styles/productInfo.css";
 
+import { useDispatch } from "react-redux";
+import { addProduct } from "../redux/cart/slice";
+
 export default function Product() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams().get("info");
 
   const [cart, setCart] = useState([]);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
@@ -37,48 +42,47 @@ export default function Product() {
   }
 
   const handleCartAddProduct = (product) => {
-    if (!cart.length) {
-      const newCart = [
-        {
-          id: product.id,
-          title: product.title,
-          price: product.price,
-          image: product.image,
-          quantity: 1,
-        },
-      ];
-      setCart(newCart);
-      localStorage.setItem("cart", JSON.stringify(newCart));
-      toast.success("Produto adicionado ao carrinho");
-      return;
-    }
-
-    const productExist = cart.find((item) => item.id === product.id);
-
-    const updateCart = productExist
-      ? cart.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      : [
-          ...cart,
-          {
-            id: product.id,
-            title: product.title,
-            price: product.price,
-            image: product.image,
-            quantity: 1,
-          },
-        ];
-    setCart(updateCart);
-    localStorage.setItem("cart", JSON.stringify(updateCart));
-    toast.success("Produto adicionado ao carrinho");
+    dispatch(addProduct(product));
+    // if (!cart.length) {
+    //   const newCart = [
+    //     {
+    //       id: product.id,
+    //       title: product.title,
+    //       price: product.price,
+    //       image: product.image,
+    //       quantity: 1,
+    //     },
+    //   ];
+    //   setCart(newCart);
+    //   localStorage.setItem("cart", JSON.stringify(newCart));
+    //   toast.success("Produto adicionado ao carrinho");
+    //   return;
+    // }
+    // const productExist = cart.find((item) => item.id === product.id);
+    // const updateCart = productExist
+    //   ? cart.map((item) =>
+    //       item.id === product.id
+    //         ? { ...item, quantity: item.quantity + 1 }
+    //         : item
+    //     )
+    //   : [
+    //       ...cart,
+    //       {
+    //         id: product.id,
+    //         title: product.title,
+    //         price: product.price,
+    //         image: product.image,
+    //         quantity: 1,
+    //       },
+    //     ];
+    // setCart(updateCart);
+    // localStorage.setItem("cart", JSON.stringify(updateCart));
+    // toast.success("Produto adicionado ao carrinho");
   };
 
   return (
     <>
-      <Header cart={cart} />
+      {/* <Header cart={cart} /> */}
       <section className="w-full lg:flex">
         <div className="bg-slate-800 relative flex justify-center items-center w-full lg:w-3/5 h-auto py-20 transition duration-200 ease-in-out">
           <div className="flex items-center justify-center">

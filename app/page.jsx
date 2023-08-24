@@ -39,7 +39,7 @@ export default function Home() {
 
   return (
     <>
-      <Header cart={cart} />
+      {/* <Header cart={cart} /> */}
       {error ? (
         <NoResult value="Erro ao buscar dados! Por favor recarregue a página" />
       ) : (

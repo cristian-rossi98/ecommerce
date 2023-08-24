@@ -6,7 +6,7 @@ import "./skeleton.css";
 export default function Skeleton({ itemsNumber, children }) {
   return (
     <>
-      <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center items-start py-4 px-8 bg-neutral-50 text-3xl sticky top-0 z-50">
+      {/* <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center items-start py-4 px-8 bg-neutral-50 text-3xl sticky top-0 z-50">
         <div className="flex justify-between w-full lg:w-auto">
           <a
             href="/"
@@ -24,7 +24,7 @@ export default function Skeleton({ itemsNumber, children }) {
         <button className="lg:flex hidden">
           <BiShoppingBag className="text-neutral-800" />
         </button>
-      </header>
+      </header> */}
       <main className="">
         {children}
         <div className="w-full flex justify-center">

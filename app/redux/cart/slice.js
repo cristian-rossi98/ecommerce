@@ -8,12 +8,46 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    clg: (state, action) => {
-      console.log('redux');
-    }
-  }
-})
+    addProduct: (state, action) => {
+      const productExistInCart = state.products.some(
+        (product) => product.id === action.payload.id
+      );
 
-export const { clg } = cartSlice.actions;
+      if (productExistInCart) {
+        state.products = state.products.map((product) => 
+          product.id === action.payload.id 
+          ? { ...product, quantity: product.quantity + 1}
+          : product
+        );
+        return;
+      }
+
+      state.products = [ ... state.products, { ...action.payload, quantity: 1}]
+    },
+    increaseProductQuantity: (state, action) => {
+      state.products = state.products.map((product) =>
+        product.id === action.payload.id
+        ? { ...product, quantity: product.quantity + 1}
+        : product
+      )
+      console.log('log: ', state.products);
+    },
+    decreaseProductQuantity: (state, action) => {
+      state.products = state.products.map((product) =>
+        product.id === action.payload.id
+        ? { ...product, quantity: product.quantity - 1}
+        : product
+      )
+      .filter((product) => product.quantity > 0);
+    },
+    removeProduct: (state, action) => {
+      state.products = state.products.filter(
+        (product) => product.id !== action.payload
+      );
+    },
+  },
+});
+
+export const { addProduct, increaseProductQuantity, decreaseProductQuantity, removeProduct } = cartSlice.actions;
 
 export default cartSlice.reducer;
