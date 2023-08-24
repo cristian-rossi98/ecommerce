@@ -78,7 +78,7 @@ export default function Cart() {
 
   return (
     <>
-      <Modal isOpen={modalIsOpen} onClose={closeModal}>
+      <Modal isOpen={modalIsOpen} onClose={closeModal} width="75%">
         <h2 className="text-lg font-bold mb-4 text-black">
           Compra Simulada com Sucesso
         </h2>

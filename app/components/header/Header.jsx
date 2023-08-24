@@ -50,10 +50,12 @@ export default function Header() {
     dispatch(login(inputValue.trim()));
     setModalIsOpen(false);
     setInputValue("");
+    toast.success("Login feito com sucesso");
   };
 
   const handleLogout = () => {
     dispatch(logout());
+    toast.success("Logout feito com sucesso");
   };
 
   const openModal = () => {
@@ -66,13 +68,13 @@ export default function Header() {
 
   return (
     <>
-      <Modal isOpen={modalIsOpen} onClose={closeModal}>
+      <Modal isOpen={modalIsOpen} onClose={closeModal} width="50%">
         <div className="flex flex-col justify-center items-center pt-8">
           <div className="bg-black rounded-full text-5xl w-14 h-14 flex justify-center items-center pt-2">
             <h1 className="main-logo">e</h1>
           </div>
           <input
-            className="w-3/5 mt-14 p-2 text-black font-light text-sm bg-neutral-50 focus:outline-none focus:border-neutral-300 transition duration-300 border-2 pr-10 rounded-sm"
+            className="w-full mt-14 p-2 text-black font-light text-sm bg-neutral-50 focus:outline-none focus:border-neutral-300 transition duration-300 border-2 pr-10 rounded-sm"
             placeholder="Nome"
             value={inputValue}
             maxLength={15}
@@ -80,7 +82,7 @@ export default function Header() {
           />
           <button
             onClick={handleLogin}
-            className="bg-black mt-4 p-2 mb-10 w-3/5 rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black"
+            className="bg-black mt-4 p-2 mb-10 w-full rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black"
           >
             Log In
           </button>
