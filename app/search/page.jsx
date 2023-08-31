@@ -20,7 +20,7 @@ export default function Search() {
   );
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    // setCart(JSON.parse(localStorage.getItem("cart")) || []);
     fetch(`https://json-server-rose-one.vercel.app/products/`)
       .then((response) => response.json())
       .then((data) => {

@@ -12,8 +12,8 @@ export default function Home() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(storedCart);
+    // const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    // setCart(storedCart);
 
     fetch("https://json-server-rose-one.vercel.app/products")
       .then((response) => {

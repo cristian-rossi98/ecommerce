@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 import Rating from "../components/products/Rating";
 import Skeleton from "../components/skeleton/Skeleton";
@@ -22,7 +23,7 @@ export default function Product() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
+    // setCart(JSON.parse(localStorage.getItem("cart")) || []);
     fetch(`https://json-server-rose-one.vercel.app/products/${searchParams}`)
       .then((response) => response.json())
       .then((data) => {
@@ -41,6 +42,7 @@ export default function Product() {
 
   const handleCartAddProduct = (product) => {
     dispatch(addProduct(product));
+    toast.success("Produto adicionado ao carrinho");
     // if (!cart.length) {
     //   const newCart = [
     //     {
