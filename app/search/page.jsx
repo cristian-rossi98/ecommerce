@@ -86,15 +86,21 @@ export default function Search() {
         </div>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12 mx-8"></div>
         {sortedProducts.length ? (
-          <div className="flex px-8">
-            <div className="text-black w-2/12 py-4">
+          <div className="flex flex-col lg:flex-row px-8">
+            {/* <div className="text-black w-2/12 py-4">
               <h1 className="text-xl font-semibold mb-2">Categorias</h1>
               <button className="mb-1 w-full text-left">Eletrônicos</button>
               <button className="mb-1 w-full text-left">Feminino</button>
               <button className="mb-1 w-full text-left">Jóias</button>
               <button className="mb-1 w-full text-left">Masculino</button>
+            </div> */}
+            <div className="lg:w-2/12">
+              <Order
+                handleOrder={setOrderProduct}
+                orderProduct={orderProduct}
+              />
             </div>
-            <ul className="flex justify-center w-8/12 flex-wrap px-4 lg:justify-start">
+            <ul className="flex justify-center w-full flex-wrap px-4 lg:justify-start">
               {sortedProducts.map((product) => (
                 <div className="py-4 w-full lg:w-1/2 lg:px-4">
                   <FeaturedProduct
@@ -108,13 +114,6 @@ export default function Search() {
                 </div>
               ))}
             </ul>
-            <div className="w-2/12 py-4">
-              <Order
-                handleOrder={setOrderProduct}
-                orderProduct={orderProduct}
-                // onOrderProductChange={setOrderProduct}
-              />
-            </div>
           </div>
         ) : (
           <NoResult value="Nenhum produto encontrado" />

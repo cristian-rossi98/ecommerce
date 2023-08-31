@@ -5,18 +5,43 @@ export default function Order({
   onOrderProductChange,
   handleOrder,
 }) {
+  const orderTypes = [
+    {
+      id: 0,
+      name: "Relevantes",
+    },
+    {
+      id: 1,
+      name: "Nome A-Z",
+    },
+    {
+      id: 2,
+      name: "Nome Z-A",
+    },
+    {
+      id: 3,
+      name: "Menores Preços",
+    },
+    {
+      id: 4,
+      name: "Maiores Preços",
+    },
+  ];
+
   return (
     <div className="text-black">
       <h1 className="text-xl font-semibold mb-2">Ordenar</h1>
-      <button
-        className={`mb-1 hover:underline w-full text-left ${
-          orderProduct === 0 ? "underline" : "hover:underline"
-        }`}
-        onClick={() => handleOrder(0)}
-      >
-        Relevantes
-      </button>
-      <button
+      {orderTypes.map((type) => (
+        <button
+          className={`mb-1 hover:underline w-6/12 text-left lg:w-full ${
+            orderProduct === type.id ? "underline" : "hover:underline"
+          }`}
+          onClick={() => handleOrder(type.id)}
+        >
+          {type.name}
+        </button>
+      ))}
+      {/* <button
         className={`mb-1 hover:underline w-full text-left ${
           orderProduct === 1 ? "underline" : "hover:underline"
         }`}
@@ -47,7 +72,7 @@ export default function Order({
         onClick={() => handleOrder(4)}
       >
         Maiores Preços
-      </button>
+      </button> */}
     </div>
   );
 }
