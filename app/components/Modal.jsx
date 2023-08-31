@@ -2,7 +2,6 @@ import { FaTimes } from "react-icons/fa";
 
 export default function Modal({ isOpen, onClose, children, width }) {
   if (!isOpen) return null;
-  console.log(width);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">

@@ -68,7 +68,7 @@ export default function Header() {
 
   return (
     <>
-      <Modal isOpen={modalIsOpen} onClose={closeModal} width="50%">
+      <Modal isOpen={modalIsOpen} onClose={closeModal} width="75%">
         <div className="flex flex-col justify-center items-center pt-8">
           <div className="bg-black rounded-full text-5xl w-14 h-14 flex justify-center items-center pt-2">
             <h1 className="main-logo">e</h1>
