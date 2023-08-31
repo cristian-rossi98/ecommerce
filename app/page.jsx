@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import Header from "./components/header/Header";
 import Products from "./components/products/Products";
 import Skeleton from "./components/skeleton/Skeleton";
 import NoResult from "./components/NoResult";
@@ -39,7 +38,6 @@ export default function Home() {
 
   return (
     <>
-      {/* <Header cart={cart} /> */}
       {error ? (
         <NoResult value="Erro ao buscar dados! Por favor recarregue a página" />
       ) : (

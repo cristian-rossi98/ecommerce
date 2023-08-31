@@ -3,7 +3,6 @@
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import Header from "../components/header/Header";
 import FeaturedProduct from "../components/products/FeaturedProduct";
 import Order from "./components/Order";
 import NoResult from "../components/NoResult";
@@ -68,7 +67,6 @@ export default function Search() {
 
   return (
     <>
-      {/* <Header cart={cart} /> */}
       <section className="m-auto ">
         <div className="flex justify-between items-center px-8">
           <h1 className="text-black text-xl overflow-hidden text-ellipsis">
@@ -86,15 +84,8 @@ export default function Search() {
         </div>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12 mx-8"></div>
         {sortedProducts.length ? (
-          <div className="flex flex-col lg:flex-row px-8">
-            {/* <div className="text-black w-2/12 py-4">
-              <h1 className="text-xl font-semibold mb-2">Categorias</h1>
-              <button className="mb-1 w-full text-left">Eletrônicos</button>
-              <button className="mb-1 w-full text-left">Feminino</button>
-              <button className="mb-1 w-full text-left">Jóias</button>
-              <button className="mb-1 w-full text-left">Masculino</button>
-            </div> */}
-            <div className="lg:w-2/12">
+          <div className="flex flex-col lg:flex-row">
+            <div className="lg:w-2/12 px-8">
               <Order
                 handleOrder={setOrderProduct}
                 orderProduct={orderProduct}
@@ -102,7 +93,7 @@ export default function Search() {
             </div>
             <ul className="flex justify-center w-full flex-wrap px-4 lg:justify-start">
               {sortedProducts.map((product) => (
-                <div className="py-4 w-full lg:w-1/2 lg:px-4">
+                <div className="py-4 w-full lg:w-1/2 px-4">
                   <FeaturedProduct
                     key={product.id}
                     product={product}

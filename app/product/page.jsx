@@ -2,9 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
-import Header from "../components/header/Header";
 import Rating from "../components/products/Rating";
 import Skeleton from "../components/skeleton/Skeleton";
 import twoWords from "../utils/twoWords";
@@ -82,7 +80,6 @@ export default function Product() {
 
   return (
     <>
-      {/* <Header cart={cart} /> */}
       <section className="w-full lg:flex">
         <div className="bg-slate-800 relative flex justify-center items-center w-full lg:w-3/5 h-auto py-20 transition duration-200 ease-in-out">
           <div className="flex items-center justify-center">
