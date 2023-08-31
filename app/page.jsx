@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import Products from "./components/products/Products";
 import Skeleton from "./components/skeleton/Skeleton";
 import NoResult from "./components/NoResult";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [cart, setCart] = useState([]);
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   useEffect(() => {
     // const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
