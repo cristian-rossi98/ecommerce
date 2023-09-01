@@ -8,6 +8,9 @@ import Order from "./components/Order";
 import NoResult from "../components/NoResult";
 import Skeleton from "../components/skeleton/Skeleton";
 
+import languages from "../languages/languages.json";
+import { useSelector } from "react-redux";
+
 export default function Search() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,6 +21,7 @@ export default function Search() {
     (product) =>
       product.title.toLowerCase().indexOf(searchParams.toLowerCase()) !== -1
   );
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   useEffect(() => {
     // setCart(JSON.parse(localStorage.getItem("cart")) || []);
@@ -70,13 +74,12 @@ export default function Search() {
       <section className="m-auto ">
         <div className="flex justify-between items-center px-8">
           <h1 className="text-black text-xl overflow-hidden text-ellipsis">
-            Mostrando {sortedProducts.length}
+            {languages.search.header.showing[lang]} {sortedProducts.length}
             {sortedProducts.length > 1 ? (
-              <span> resultados </span>
+              <span> {languages.search.header.results.plural[lang]} </span>
             ) : (
-              <span> resultado </span>
+              <span> {languages.search.header.results.singular[lang]} </span>
             )}
-            para
             <span> "</span>
             <span className="font-semibold">{searchParams}</span>
             <span>"</span>
@@ -107,7 +110,7 @@ export default function Search() {
             </ul>
           </div>
         ) : (
-          <NoResult value="Nenhum produto encontrado" />
+          <NoResult value={languages.search.noResult[lang]} />
         )}
       </section>
     </>

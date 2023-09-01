@@ -83,6 +83,62 @@
       }
     }
   },
+  "search": {
+    "header": {
+      "showing": {
+        "pt": "Mostrando",
+        "en": "Showing"
+      },
+      "results": {
+        "singular": {
+          "pt": "resultado para",
+          "en": "result for"
+        },
+        "plural": {
+          "pt": "resultados para",
+          "en": "results for"
+        }
+      }
+    },
+    "order": {
+      "title": {
+        "pt": "Ordenar",
+        "en": "Order"
+      },
+      "types": {
+        "relevance": {
+          "pt": "Relevância",
+          "en": "Relevance"
+        },
+        "nameAZ": {
+          "pt": "Nome A-Z",
+          "en": "Name A-Z"
+        },
+        "nameZA": {
+          "pt": "Nome Z-A",
+          "en": "Name Z-A"
+        },
+        "lowerPrices": {
+          "pt": "Menores Preços",
+          "en": "Lower Prices"
+        },
+        "higherPrices": {
+          "pt": "Maiores Preços",
+          "en": "Higher Prices"
+        }
+      }
+    },
+    "noResult": {
+      "pt": "Nenhum produto encontrado",
+      "en": "No products found"
+    }
+  },
+  "cart": {
+    "header": {
+      "pt": "Meu carrinho",
+      "en": "My cart"
+    }
+  },
   "footer": {
     "lang": {
       "portuguese": {

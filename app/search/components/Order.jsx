@@ -1,36 +1,40 @@
-import { BiMenuAltRight } from "react-icons/bi";
+import { useSelector } from "react-redux";
+import languages from "../../languages/languages.json";
 
 export default function Order({
   orderProduct,
   onOrderProductChange,
   handleOrder,
 }) {
+  const { lang } = useSelector((reducer) => reducer.langReducer);
   const orderTypes = [
     {
       id: 0,
-      name: "Relevantes",
+      name: languages.search.order.types.relevance[lang],
     },
     {
       id: 1,
-      name: "Nome A-Z",
+      name: languages.search.order.types.nameAZ[lang],
     },
     {
       id: 2,
-      name: "Nome Z-A",
+      name: languages.search.order.types.nameZA[lang],
     },
     {
       id: 3,
-      name: "Menores Preços",
+      name: languages.search.order.types.lowerPrices[lang],
     },
     {
       id: 4,
-      name: "Maiores Preços",
+      name: languages.search.order.types.higherPrices[lang],
     },
   ];
 
   return (
     <div className="text-black">
-      <h1 className="text-xl font-semibold mb-2">Ordenar</h1>
+      <h1 className="text-xl font-semibold mb-2">
+        {languages.search.order.title[lang]}
+      </h1>
       {orderTypes.map((type) => (
         <button
           className={`mb-1 hover:underline w-6/12 text-left lg:w-full ${
