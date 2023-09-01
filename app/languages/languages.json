@@ -57,6 +57,32 @@
       "en": "Error fetching data! Please reload the page"
     }
   },
+  "product": {
+    "price": {
+      "pt": "R$",
+      "en": "US$"
+    },
+    "button": {
+      "pt": "COMPRAR",
+      "en": "BUY"
+    },
+    "rating": {
+      "txt1": {
+        "pt": "Baseado em",
+        "en": "Based on"
+      },
+      "txt2": {
+        "pt": "avaliações",
+        "en": "reviews"
+      }
+    },
+    "toast": {
+      "success": {
+        "pt": "Produto adicionado ao carrinho",
+        "en": "Product added to cart"
+      }
+    }
+  },
   "footer": {
     "lang": {
       "portuguese": {

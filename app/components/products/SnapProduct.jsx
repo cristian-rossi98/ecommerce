@@ -4,8 +4,12 @@ import "./snapProduct.css";
 
 import twoWords from "../../utils/twoWords";
 
+import languages from "../../languages/languages.json";
+import { useSelector } from "react-redux";
+
 export default function SnapProduct({ product }) {
   const router = useRouter();
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   return (
     <>
@@ -17,7 +21,7 @@ export default function SnapProduct({ product }) {
           {twoWords(product.title, 0, 2)}
         </h1>
         <h1 className="absolute inline py-2 px-12 text-white bg-slate-600 text-xs font-medium product-description">
-          R$ {product.price}
+          {languages.product.price[lang]} {product.price}
         </h1>
         <div className=" h-40 md:h-56 lg:h-72 flex justify-center">
           <img

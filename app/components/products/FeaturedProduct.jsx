@@ -2,6 +2,9 @@ import { useRouter } from "next/navigation";
 import "./product.css";
 import twoWords from "../../utils/twoWords";
 
+import languages from "../../languages/languages.json";
+import { useSelector } from "react-redux";
+
 export default function FeaturedProduct({
   product,
   classStyle,
@@ -10,6 +13,7 @@ export default function FeaturedProduct({
   degree,
 }) {
   const router = useRouter();
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   return (
     <li
@@ -53,7 +57,7 @@ export default function FeaturedProduct({
             )}
           </span>
           <p className="table text-sm font-medium text-neutral-700 mt-5 md:mt-1 bg-neutral-50 px-8 py-4 shadow-md product-text">
-            R$ {product.price}
+            {languages.product.price[lang]} {product.price}
           </p>
         </div>
       </div>

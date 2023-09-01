@@ -10,15 +10,17 @@ import twoWords from "../utils/twoWords";
 
 import "./styles/productInfo.css";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../redux/cart/slice";
+
+import languages from "../languages/languages.json";
 
 export default function Product() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams().get("info");
 
-  const [cart, setCart] = useState([]);
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   const dispatch = useDispatch();
 
@@ -42,7 +44,7 @@ export default function Product() {
 
   const handleCartAddProduct = (product) => {
     dispatch(addProduct(product));
-    toast.success("Produto adicionado ao carrinho");
+    toast.success(languages.product.toast.success[lang]);
     // if (!cart.length) {
     //   const newCart = [
     //     {
@@ -113,7 +115,7 @@ export default function Product() {
               )}
             </span>
             <p className="table text-base font-bold text-neutral-700  bg-neutral-50 px-6 py-4">
-              R$ {product.price}
+              {languages.product.price[lang]} {product.price}
             </p>
           </div>
         </div>
@@ -132,7 +134,7 @@ export default function Product() {
               onClick={() => handleCartAddProduct(product)}
               className="bg-black p-4 mb-10 w-full font-medium rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black"
             >
-              COMPRAR
+              {languages.product.button[lang]}
             </button>
           </div>
           <div className="flex flex-col items-center text-gray-900">
@@ -142,7 +144,8 @@ export default function Product() {
             </p>
             <Rating value={product.rating.rate} />
             <p className="text-xs font-medium text-gray-500">
-              Baseado em {product.rating.count} avaliações
+              {languages.product.rating.txt1[lang]} {product.rating.count}{" "}
+              {languages.product.rating.txt2[lang]}
             </p>
           </div>
         </div>
