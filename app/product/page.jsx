@@ -90,32 +90,32 @@ export default function Product() {
             <img
               className="product-image-info"
               src={product.image}
-              alt={product.title}
+              alt={product.title[lang]}
               rel="preload"
             />
           </div>
           <div className="absolute top-5 left-0">
             <h1 className="text-3xl font-bold text-black bg-neutral-50 px-6 pt-4 lg:pb-4">
-              {twoWords(product.title, 0, 1)}{" "}
+              {twoWords(product.title[lang], 0, 1)}{" "}
               <span className="md:inline hidden">
-                {twoWords(product.title, 1, 2)
-                  ? twoWords(product.title, 1, 2)
-                  : twoWords(product.title, 2, 3)}
+                {twoWords(product.title[lang], 1, 2)
+                  ? twoWords(product.title[lang], 1, 2)
+                  : twoWords(product.title[lang], 2, 3)}
               </span>
             </h1>
             <span className="md:hidden">
-              {twoWords(product.title, 1, 2) ? (
+              {twoWords(product.title[lang], 1, 2) ? (
                 <h1 className="text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
-                  {twoWords(product.title, 1, 2)}
+                  {twoWords(product.title[lang], 1, 2)}
                 </h1>
               ) : (
                 <h1 className="text-3xl font-bold text-black bg-neutral-50 px-6 py-2">
-                  {twoWords(product.title, 2, 3)}
+                  {twoWords(product.title[lang], 2, 3)}
                 </h1>
               )}
             </span>
             <p className="table text-base font-bold text-neutral-700  bg-neutral-50 px-6 py-4">
-              {languages.product.price[lang]} {product.price}
+              {languages.product.price[lang]} {product.price[lang]}
             </p>
           </div>
         </div>
@@ -123,10 +123,10 @@ export default function Product() {
         <div className="px-8 lg:w-2/5">
           <div className="mb-16 mt-8 lg:mt-0">
             <h1 className="text-lg font-semibold text-neutral-800 text-justify lg:text-3xl lg:font-bold">
-              {product.title}
+              {product.title[lang]}
             </h1>
             <p className="text-lg text-neutral-800 text-justify lg:text-xl lg:mt-4">
-              {product.description}
+              {product.description[lang]}
             </p>
           </div>
           <div className="w-full">

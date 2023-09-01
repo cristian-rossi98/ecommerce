@@ -13,13 +13,13 @@ import "./cartProduct.css";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function CartProduct({ product, cartLenght, index }) {
-  const title = `${twoWords(product.title, 0, 1)} ${
-    twoWords(product.title, 1, 2)
-      ? twoWords(product.title, 1, 2)
-      : twoWords(product.title, 2, 3)
+  const { lang } = useSelector((reducer) => reducer.langReducer);
+  const title = `${twoWords(product.title[lang], 0, 1)} ${
+    twoWords(product.title[lang], 1, 2)
+      ? twoWords(product.title[lang], 1, 2)
+      : twoWords(product.title[lang], 2, 3)
   }`;
   const dispatch = useDispatch();
-  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   return (
     <li className="w-full mb-16">
@@ -27,7 +27,7 @@ export default function CartProduct({ product, cartLenght, index }) {
         <img
           className="product-image-cart mr-4"
           src={product.image}
-          alt={product.title}
+          alt={product.title[lang]}
           rel="preload"
           loading="lazy"
         />
@@ -35,7 +35,7 @@ export default function CartProduct({ product, cartLenght, index }) {
           {title}
         </h1>
         <p className="w-full text-sm font-normal text-neutral-700 bg-neutral-50 text-end lg:text-lg lg:font-medium">
-          {languages.product.price[lang]} {product.price}
+          {languages.product.price[lang]} {product.price[lang]}
         </p>
       </div>
 

@@ -15,12 +15,11 @@ import { selectProductsTotalPrice } from "../redux/cart/selector";
 import languages from "../languages/languages.json";
 
 export default function Cart() {
-  const [cart, setCart] = useState([]);
+  const { lang } = useSelector((reducer) => reducer.langReducer);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const { products } = useSelector((reducer) => reducer.cartReducer);
   const totalPrice = useSelector(selectProductsTotalPrice);
-  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   useEffect(() => {
     // setCart(JSON.parse(localStorage.getItem("cart")) || []);

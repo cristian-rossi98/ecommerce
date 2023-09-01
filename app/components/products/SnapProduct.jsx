@@ -18,16 +18,16 @@ export default function SnapProduct({ product }) {
         className="relative snap-center shrink-0 h-40 cursor-pointer w-full md:h-full flex justify-center"
       >
         <h1 className="absolute inline py-2 px-12 text-white bg-slate-600 text-sm font-bold product-title">
-          {twoWords(product.title, 0, 2)}
+          {twoWords(product.title[lang], 0, 2)}
         </h1>
         <h1 className="absolute inline py-2 px-12 text-white bg-slate-600 text-xs font-medium product-description">
-          {languages.product.price[lang]} {product.price}
+          {languages.product.price[lang]} {product.price[lang]}
         </h1>
         <div className=" h-40 md:h-56 lg:h-72 flex justify-center">
           <img
             className="mx-28"
             src={product.image}
-            alt={product.title}
+            alt={product.title[lang]}
             rel="preload"
             loading="lazy"
           />

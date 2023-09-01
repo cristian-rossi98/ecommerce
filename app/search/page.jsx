@@ -17,14 +17,14 @@ export default function Search() {
   const searchParams = useSearchParams().get("search");
   const [cart, setCart] = useState([]);
   const [orderProduct, setOrderProduct] = useState(0);
+  const { lang } = useSelector((reducer) => reducer.langReducer);
   const filteredProducts = product.filter(
     (product) =>
-      product.title.toLowerCase().indexOf(searchParams.toLowerCase()) !== -1
+      product.title[lang].toLowerCase().indexOf(searchParams.toLowerCase()) !==
+      -1
   );
-  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   useEffect(() => {
-    // setCart(JSON.parse(localStorage.getItem("cart")) || []);
     fetch(`https://json-server-rose-one.vercel.app/products/`)
       .then((response) => response.json())
       .then((data) => {
@@ -43,7 +43,6 @@ export default function Search() {
 
   const handleOrder = (value) => {
     setOrderProduct(value);
-    console.log(orderProduct);
   };
 
   let sortedProducts = filteredProducts;
@@ -51,19 +50,23 @@ export default function Search() {
   switch (orderProduct) {
     case 1:
       sortedProducts = [...filteredProducts].sort((a, b) => {
-        return a.title.localeCompare(b.title);
+        return a.title[lang].localeCompare(b.title[lang]);
       });
       break;
     case 2:
       sortedProducts = [...filteredProducts].sort((a, b) => {
-        return b.title.localeCompare(a.title);
+        return b.title[lang].localeCompare(a.title[lang]);
       });
       break;
     case 3:
-      sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
+      sortedProducts = [...filteredProducts].sort(
+        (a, b) => a.price[lang] - b.price[lang]
+      );
       break;
     case 4:
-      sortedProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+      sortedProducts = [...filteredProducts].sort(
+        (a, b) => b.price[lang] - a.price[lang]
+      );
       break;
     default:
       break;

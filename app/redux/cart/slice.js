@@ -13,13 +13,10 @@ const cartSlice = createSlice({
       const storage = { ...localStorage };
       if (storage.cart) {
         const cartStorage = JSON.parse(storage.cart);
-        console.log('cartStorage: ', cartStorage);
 
         const productExistInCart = cartStorage.some(
           (product) => product.id === action.payload.id
         );
-
-        console.log('productExistInCart: ', productExistInCart);
   
         if (productExistInCart) {
           state.products = cartStorage.map((product) => 
