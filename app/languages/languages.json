@@ -137,6 +137,52 @@
     "header": {
       "pt": "Meu carrinho",
       "en": "My cart"
+    },
+    "values": {
+      "subtotal": {
+        "pt": "Subtotal",
+        "en": "Subtotal"
+      },
+      "shipping": {
+        "title": {
+          "pt": "Frete",
+          "en": "Shipping"
+        },
+        "value": {
+          "pt": "GRÁTIS",
+          "en": "FREE"
+        }
+      },
+      "total": {
+        "pt": "Total",
+        "en": "Total"
+      }
+    },
+    "button": {
+      "pt": "FINALIZAR COMPRA",
+      "en": "PROCEED TO CHECKOUT"
+    },
+    "checkout": {
+      "header": {
+        "pt": "Compra Simulada com Sucesso",
+        "en": "Successful Simulated Purchase"
+      },
+      "paragraph": {
+        "pt": "Obrigado por escolher nossa loja para simular sua compra. Fique tranquilo, esta é apenas uma demonstração para o meu portfólio.",
+        "en": "Thank you for choosing our store for your purchase simulation. Don't worry, this is just a demonstration for my portfolio."
+      },
+      "paragraphStrong": {
+        "pt": "Não será feita nenhuma cobrança e nenhum produto será enviado.",
+        "en": "No charges will be made, and no products will be shipped."
+      },
+      "footer": {
+        "pt": "Obrigado por ter chego até aqui! ♥︎",
+        "en": "Thanks for making it this far! ♥︎"
+      }
+    },
+    "noResult": {
+      "pt": "Seu carrinho está vazio",
+      "en": "Your cart is empty"
     }
   },
   "footer": {

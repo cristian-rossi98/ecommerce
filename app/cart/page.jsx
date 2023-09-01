@@ -1,6 +1,5 @@
 "use client";
 
-import Header from "../components/header/Header";
 import NoResult from "../components/NoResult";
 import CartProduct from "./components/CartProduct";
 import Modal from "../components/Modal";
@@ -13,13 +12,15 @@ import { useSelector } from "react-redux";
 
 import { selectProductsTotalPrice } from "../redux/cart/selector";
 
+import languages from "../languages/languages.json";
+
 export default function Cart() {
   const [cart, setCart] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const { products } = useSelector((reducer) => reducer.cartReducer);
-  // setCart(products);
   const totalPrice = useSelector(selectProductsTotalPrice);
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   useEffect(() => {
     // setCart(JSON.parse(localStorage.getItem("cart")) || []);
@@ -31,7 +32,9 @@ export default function Cart() {
     return (
       <Skeleton itemsNumber={1}>
         <div className="px-8 m-auto">
-          <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
+          <h1 className="text-black font-bold text-xl">
+            {languages.cart.header[lang]}
+          </h1>
           <div className="border-t-2 border-neutral-200 mt-4"></div>
         </div>
       </Skeleton>
@@ -80,17 +83,14 @@ export default function Cart() {
     <>
       <Modal isOpen={modalIsOpen} onClose={closeModal} width="75%">
         <h2 className="text-lg font-bold mb-4 text-black">
-          Compra Simulada com Sucesso
+          {languages.cart.checkout.header[lang]}
         </h2>
         <p className="text-black text-justify">
-          Obrigado por escolher nossa loja para simular sua compra. Fique
-          tranquilo, esta é apenas uma demonstração para o meu portfólio.{" "}
-          <strong>
-            Não será feita nenhuma cobrança e nenhum produto será enviado.
-          </strong>
+          {languages.cart.checkout.paragraph[lang]}{" "}
+          <strong>{languages.cart.checkout.paragraphStrong[lang]}</strong>
           <br></br>
           <br></br>
-          Obrigado por ter chegado até aqui! ♥︎
+          {languages.cart.checkout.footer[lang]}
           <br></br>
           <br></br>
         </p>
@@ -111,7 +111,9 @@ export default function Cart() {
       </Modal>
       {/* <Header cart={cart} /> */}
       <section className="px-8 m-auto ">
-        <h1 className="text-black font-bold text-xl">Meu carrinho</h1>
+        <h1 className="text-black font-bold text-xl">
+          {languages.cart.header[lang]}
+        </h1>
         <div className="border-t-2 border-neutral-200 mt-4 mb-12"></div>
         {products.length ? (
           <>
@@ -130,35 +132,43 @@ export default function Cart() {
             </ul>
             <div className="border-t-2 border-b-2 border-neutral-100 py-4 mb-2">
               <div className="flex justify-between">
-                <p className="text-neutral-700 font-light mb-2">Subtotal</p>
+                <p className="text-neutral-700 font-light mb-2">
+                  {languages.cart.values.subtotal[lang]}
+                </p>
                 <p className="text-neutral-700 font-light">
-                  R$ {totalPrice.toFixed(2)}
+                  {languages.product.price[lang]} {totalPrice.toFixed(2)}
                 </p>
               </div>
               <div className="flex justify-between">
-                <p className="text-neutral-700 font-light">Frete</p>
-                <p className="text-neutral-800 font-bold">GRÁTIS</p>
+                <p className="text-neutral-700 font-light">
+                  {languages.cart.values.shipping.title[lang]}
+                </p>
+                <p className="text-neutral-800 font-bold">
+                  {languages.cart.values.shipping.value[lang]}
+                </p>
               </div>
             </div>
             {totalPrice > 0 && (
               <div className="flex flex-col">
                 <div className="flex justify-between items-start mb-12">
-                  <p className="text-black font-semibold lg:text-2xl">Total</p>
                   <p className="text-black font-semibold lg:text-2xl">
-                    R$ {totalPrice.toFixed(2)}
+                    {languages.cart.values.total[lang]}
+                  </p>
+                  <p className="text-black font-semibold lg:text-2xl">
+                    {languages.product.price[lang]} {totalPrice.toFixed(2)}
                   </p>
                 </div>
                 <button
                   onClick={openModal}
                   className="bg-black p-4 mb-10 w-full rounded-sm border-2 border-black transition-all duration-300 hover:bg-neutral-50 hover:text-black"
                 >
-                  FINALIZAR COMPRA
+                  {languages.cart.button[lang]}
                 </button>
               </div>
             )}
           </>
         ) : (
-          <NoResult value="Seu carrinho está vazio" />
+          <NoResult value={languages.cart.noResult[lang]} />
         )}
       </section>
     </>
