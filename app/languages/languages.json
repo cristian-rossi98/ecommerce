@@ -1,0 +1,76 @@
+{
+  "header": {
+    "welcome": {
+      "pt": "Bem-vindo, ",
+      "en": "Welcome, "
+    },
+    "login": {
+      "name": {
+        "pt": "Nome",
+        "en": "Name"
+      },
+      "toast": {
+        "login": {
+          "pt": "Login feito com sucesso",
+          "en": "Successful login"
+        },
+        "logout": {
+          "pt": "Logout feito com sucesso",
+          "en": "Successfull logout"
+        },
+        "error": {
+          "pt": "Digite seu nome",
+          "en": "Type your name"
+        }
+      }
+    },
+    "search": {
+      "input": {
+        "pt": "Pesquise por produtos",
+        "en": "Search for products"
+      },
+      "toast": {
+        "error": {
+          "pt": "Digite o produto que deseja buscar",
+          "en": "Enter the product you want to search for"
+        }
+      }
+    }
+  },
+  "home": {
+    "release": {
+      "title": {
+        "pt": "Detalhes do Lançamento: O Elegante Glamour X1",
+        "en": "Release Details: The Elegant Glamor X1"
+      },
+      "paragraph": {
+        "pt": "A prestigiada série Glamour X1 continua a surpreender. Depois do impactante lançamento da edição 'Luxo', chegou a hora de desvendar os emocionantes detalhes sobre a mais recente joia: o tão aguardado modelo 'Élégance'. Revelado pela Equipe Glamour com entusiasmo neste ano, o produto, inicialmente conhecido como 'Radiance', passou por uma transformação sofisticada e agora é apresentado como o Elegante Glamour X1 'Élégance'. Prepare-se para uma experiência que reúne estilo, luxo e elegância, como nunca antes, com o Elegante Glamour X1 'Élégance'.",
+        "en": "The prestigious Glamor X1 series continues to surprise. After the stunning launch of the 'Luxury' edition, it's time to unveil the exciting details about the latest gem: the long-awaited 'Élégance' model. Revealed by the Glamor Team with enthusiasm this year, the product, initially known as 'Radiance', underwent a sophisticated transformation and is now presented as the Elegant Glamor X1 'Élégance'. Get ready for an experience that brings together style, luxury and elegance like never before with the Elegant Glamor X1 'Élégance'."
+      },
+      "soon": {
+        "pt": "EM BREVE",
+        "en": "SOON"
+      }
+    },
+    "noResult": {
+      "pt": "Erro ao buscar dados! Por favor recarregue a página",
+      "en": "Error fetching data! Please reload the page"
+    }
+  },
+  "footer": {
+    "lang": {
+      "portuguese": {
+        "pt": "Português",
+        "en": "Portuguese"
+      },
+      "english": {
+        "pt": "Inglês",
+        "en": "English"
+      }
+    },
+    "dev": {
+      "pt": "Feito com ♥ em Marília (SP), Brasil.",
+      "en": "Made with ♥ in Marília (SP), Brazil."
+    }
+  }
+}

@@ -15,6 +15,8 @@ import { login, logout } from "../../redux/user/slice";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
+import languages from "../../languages/languages.json";
+
 export default function Header() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const router = useRouter();
@@ -24,6 +26,8 @@ export default function Header() {
   const productsCount = useSelector(selectProductsCount);
   const { logged, userName } = useSelector((reducer) => reducer.userReducer);
 
+  const { lang } = useSelector((reducer) => reducer.langReducer);
+
   const handleCartNavigate = () => {
     router.push("/cart");
   };
@@ -31,7 +35,7 @@ export default function Header() {
   const handleSearchNavigate = (key, value) => {
     if (key === "Enter") {
       if (value.trim() === "") {
-        toast.error("Digite o produto que deseja buscar");
+        toast.error(languages.header.search.toast.error[lang]);
         return;
       }
       router.push(`/search?search=${value.trim()}`);
@@ -44,18 +48,18 @@ export default function Header() {
 
   const handleLogin = () => {
     if (inputValue.trim() === "") {
-      toast.error("Digite seu nome");
+      toast.error(languages.header.login.toast.error[lang]);
       return;
     }
     dispatch(login(inputValue.trim()));
     setModalIsOpen(false);
     setInputValue("");
-    toast.success("Login feito com sucesso");
+    toast.success(languages.header.login.toast.login[lang]);
   };
 
   const handleLogout = () => {
     dispatch(logout());
-    toast.success("Logout feito com sucesso");
+    toast.success(languages.header.login.toast.logout[lang]);
   };
 
   const openModal = () => {
@@ -75,7 +79,7 @@ export default function Header() {
           </div>
           <input
             className="w-full mt-14 p-2 text-black font-light text-sm bg-neutral-50 focus:outline-none focus:border-neutral-300 transition duration-300 border-2 pr-10 rounded-sm"
-            placeholder="Nome"
+            placeholder={languages.header.login.name[lang]}
             value={inputValue}
             maxLength={15}
             onChange={(e) => handleInputChange(e.target.value)}
@@ -100,7 +104,8 @@ export default function Header() {
             </a>
             {logged && (
               <p className="text-black text-base main-greetings pt-2">
-                Bem-vindo, {userName}
+                {languages.header.welcome[lang]}
+                {userName}
               </p>
             )}
           </div>

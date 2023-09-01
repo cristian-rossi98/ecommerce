@@ -4,7 +4,12 @@ import SnapProduct from "./SnapProduct";
 import "./product.css";
 import "./snapProduct.css";
 
+import languages from "../../languages/languages.json";
+import { useSelector } from "react-redux";
+
 export default function Products({ products }) {
+  const { lang } = useSelector((reducer) => reducer.langReducer);
+
   const colors = {
     men: ["rgb(100 116 139)"],
     jewelery: ["rgb(15 23 42)"],
@@ -65,29 +70,21 @@ export default function Products({ products }) {
         <ul className="flex justify-center flex-wrap">
           <li className="bg-black px-8 lg:px-16 lg:py-16 pb-16 pt-8 lg:flex lg:flex-row">
             <h1 className="text-xl font-bold mb-8 lg:hidden">
-              Detalhes do Lançamento: O Elegante Glamour X1
+              {languages.home.release.title[lang]}
             </h1>
             <div className="hidden lg:flex lg:flex-col lg:mr-16 lg:justify-between">
               <h1 className="text-xl lg:text-5xl font-bold lg:mb-0">
-                Detalhes do Lançamento: O Elegante Glamour X1
+                {languages.home.release.title[lang]}
               </h1>
               <p className="bg-neutral-100 mt-4 py-2 px-4 text-neutral-800 font-extrabold text-lg rounded-sm inline-block">
-                EM BREVE
+                {languages.home.release.soon[lang]}
               </p>
             </div>
             <p className="text-justify lg:text-xl">
-              A prestigiada série Glamour X1 continua a surpreender. Depois do
-              impactante lançamento da edição 'Luxo', chegou a hora de desvendar
-              os emocionantes detalhes sobre a mais recente joia: o tão
-              aguardado modelo 'Élégance'. Revelado pela Equipe Glamour com
-              entusiasmo neste ano, o produto, inicialmente conhecido como
-              'Radiance', passou por uma transformação sofisticada e agora é
-              apresentado como o Elegante Glamour X1 'Élégance'. Prepare-se para
-              uma experiência que reúne estilo, luxo e elegância, como nunca
-              antes, com o Elegante Glamour X1 'Élégance'.
+              {languages.home.release.paragraph[lang]}
             </p>
             <p className="bg-neutral-100 mt-4 py-2 px-4 text-neutral-800 font-extrabold text-lg rounded-sm inline-block lg:hidden">
-              EM BREVE
+              {languages.home.release.soon[lang]}
             </p>
           </li>
         </ul>

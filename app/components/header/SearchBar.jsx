@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
+import { useSelector } from "react-redux";
+
+import languages from "../../languages/languages.json";
 
 export default function SearchBar({ handleSearchNavigate }) {
   const [inputValue, setInputValue] = useState("");
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   const handleInputChange = (value) => {
     setInputValue(value);
@@ -14,7 +18,7 @@ export default function SearchBar({ handleSearchNavigate }) {
         <input
           className="w-full p-2 text-black font-light text-sm bg-neutral-200 focus:outline-none focus:border-neutral-300 transition duration-300 border-2 border-transparent pr-10 rounded-sm"
           type="search"
-          placeholder="Pesquise por produtos"
+          placeholder={languages.header.search.input[lang]}
           value={inputValue}
           maxLength={50}
           onKeyDown={(e) => handleSearchNavigate(e.key, e.target.value)}

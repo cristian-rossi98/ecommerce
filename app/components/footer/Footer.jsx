@@ -1,11 +1,14 @@
 "use client";
 
 import { AiFillGithub } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeLang } from "../../redux/lang/slice";
+
+import languages from "../../languages/languages.json";
 
 export default function Footer() {
   const dispatch = useDispatch();
+  const { lang } = useSelector((reducer) => reducer.langReducer);
 
   const handleChangeLang = (lang) => {
     dispatch(changeLang(lang));
@@ -25,8 +28,10 @@ export default function Footer() {
           name=""
           id=""
         >
-          <option value="pt">🇧🇷 Português</option>
-          <option value="en">🇺🇸 Inglês</option>
+          <option value="pt">
+            🇧🇷 {languages.footer.lang.portuguese[lang]}
+          </option>
+          <option value="en">🇺🇸 {languages.footer.lang.english[lang]}</option>
         </select>
       </div>
       <div className="border-t-2 rounded-lg border-neutral-200 w-full mb-12"></div>
@@ -37,9 +42,7 @@ export default function Footer() {
         <AiFillGithub className="text-neutral-800 text-4xl" />
       </a> */}
       <p className="text-sm text-neutral-800 mb-4">© 2023 Cristian Rossi.</p>
-      <p className="text-sm text-neutral-800">
-        Feito com ♥ em Marília (SP), Brasil.
-      </p>
+      <p className="text-sm text-neutral-800">{languages.footer.dev[lang]}</p>
     </footer>
   );
 }

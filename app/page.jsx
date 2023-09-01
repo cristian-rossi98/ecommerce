@@ -6,11 +6,12 @@ import Skeleton from "./components/skeleton/Skeleton";
 import NoResult from "./components/NoResult";
 import { useSelector } from "react-redux";
 
+import languages from "./languages/languages.json";
+
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [cart, setCart] = useState([]);
   const { lang } = useSelector((reducer) => reducer.langReducer);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function Home() {
   return (
     <>
       {error ? (
-        <NoResult value="Erro ao buscar dados! Por favor recarregue a página" />
+        <NoResult value={languages.home.noResult[lang]} />
       ) : (
         <Products products={data} />
       )}

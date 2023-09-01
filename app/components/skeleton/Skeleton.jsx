@@ -1,30 +1,8 @@
-import { BiShoppingBag } from "react-icons/bi";
-
-import SearchBar from "../header/SearchBar";
 import "./skeleton.css";
 
 export default function Skeleton({ itemsNumber, children }) {
   return (
     <>
-      {/* <header className="flex flex-col lg:flex-row lg:justify-between lg:items-center items-start py-4 px-8 bg-neutral-50 text-3xl sticky top-0 z-50">
-        <div className="flex justify-between w-full lg:w-auto">
-          <a
-            href="/"
-            className="bg-black rounded-2xl w-8 h-8 flex justify-center items-center"
-          >
-            <h1 className="main-logo">e</h1>
-          </a>
-          <button className="flex lg:hidden">
-            <BiShoppingBag className="text-neutral-800" />
-          </button>
-        </div>
-        <div className="flex pt-6 lg:pt-0 w-full lg:w-2/4">
-          <SearchBar />
-        </div>
-        <button className="lg:flex hidden">
-          <BiShoppingBag className="text-neutral-800" />
-        </button>
-      </header> */}
       <main className="px-8">
         {children}
         <div className="w-full flex justify-center">
