@@ -16,3 +16,24 @@
   right: 25%;
 }
 
+.carousel {
+  display: flex;
+  animation: scroll 30s linear infinite; 
+  white-space: nowrap; 
+  width: 3500px;
+}
+
+.carousel-container {
+  width: 100%;
+  /* width: 1500px; */
+  overflow: hidden;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%); /* Desloque toda a largura do container */
+  }
+}

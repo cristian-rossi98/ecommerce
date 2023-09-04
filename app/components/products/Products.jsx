@@ -11,13 +11,13 @@ export default function Products({ products }) {
   const { lang } = useSelector((reducer) => reducer.langReducer);
 
   const colors = {
-    men: ["rgb(100 116 139)"],
+    men: ["rgb(212 212 212)"],
     jewelery: ["rgb(15 23 42)"],
     women: ["rgb(244 244 244)"],
   };
 
   const backgrounds = {
-    men: ["rgb(100, 116, 139, 0.975)"],
+    men: ["rgb(212, 212, 212, 0.9)"],
     jewelery: ["rgb(15, 23, 42, 0.99)"],
     women: ["rgb(244 244 244)"],
   };
@@ -91,8 +91,15 @@ export default function Products({ products }) {
         <ul className="flex justify-center flex-wrap lg:justify-start">
           {renderFeaturedProducts("jewelery")}
         </ul>
-        <section className="pt-12 w-full bg-neutral-950">
+        {/* <section className="pt-12 w-full bg-neutral-950">
           <div className="relative w-full flex items-center gap-6 snap-x snap-mandatory overflow-x-auto pb-14">
+            {snapProductsElectronics.map((product) => (
+              <SnapProduct key={product.id} product={product} />
+            ))}
+          </div>
+        </section> */}
+        <section className="carousel-container py-12 bg-neutral-950 w-full">
+          <div className="carousel">
             {snapProductsElectronics.map((product) => (
               <SnapProduct key={product.id} product={product} />
             ))}
