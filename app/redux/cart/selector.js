@@ -1,7 +1,10 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectProductsCount = (state) => 
-  state.cartReducer.products.reduce((acc, curr) => acc + curr.quantity, 0);
+export const selectProductsCount = (rootReducer) => {
+  return rootReducer.cartReducer.products.reduce(
+  (acc, curr) => acc + curr.quantity, 0
+  )
+};
   // console.log('selector: ', state.cartReducer.products);
 
 

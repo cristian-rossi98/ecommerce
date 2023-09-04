@@ -5,9 +5,9 @@ const initialState = {
   totalPrice: 0,
 }
 
-if (typeof window !== "undefined") {
-  initialState.products = JSON.parse(localStorage.getItem("cart")) || [];
-}
+// if (typeof window !== "undefined") {
+//   initialState.products = JSON.parse(localStorage.getItem("cart")) || [];
+// }
 
 const cartSlice = createSlice({
   name: 'cart',

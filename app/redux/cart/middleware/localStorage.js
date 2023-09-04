@@ -1,6 +1,7 @@
 export const localStorageMiddleware = () => (dispatch) => {
   try {
     const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log('log middleware: ' ,cartProducts);
     dispatch(setCart(cartProducts));
   } catch (error) {
     console.log('local storage error: ', error);
