@@ -1,24 +1,31 @@
 import { createSelector } from '@reduxjs/toolkit';
 
-export const selectProductsCount = (rootReducer) => {
+export const selectProductsCount = (state) => 
+  state.cartReducer.products.reduce((acc, curr) => acc + curr.quantity, 0);
+  // console.log('selector: ', state.cartReducer.products);
+
+
+
   // return rootReducer.cartReducer.products.reduce(
   //   (acc, curr) => acc + curr.quantity, 0
   // );
   // const productsCount = rootReducer.cartReducer.products.reduce(
   //   (acc, curr) => acc + curr.quantity, 0
   // );
-  let cartStorage = []
-  const storage = { ...localStorage };
-  if (storage.cart) {
-    cartStorage = JSON.parse(storage.cart) ;
-  }
-  const cartCount = cartStorage.reduce(
-    (acc, curr) => acc + curr.quantity, 0
-  );
-  return cartCount;
+
+  // let cartStorage = []
+  // const storage = { ...localStorage };
+  // if (storage.cart) {
+  //   cartStorage = JSON.parse(storage.cart) ;
+  // }
+  // const cartCount = cartStorage.reduce(
+  //   (acc, curr) => acc + curr.quantity, 0
+  // );
+  // return cartCount;
+
   // const numeroDeItens = Object.keys(todosItens).length;
   // localStorage.setItem("cartLength", numeroDeItens);
-};
+
 
 const selectLang = (state) => state.langReducer.lang;
 const selectCart = (state) => state.cartReducer.products;
