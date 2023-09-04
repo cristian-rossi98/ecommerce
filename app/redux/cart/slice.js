@@ -5,9 +5,9 @@ const initialState = {
   totalPrice: 0,
 }
 
-// if (typeof window !== "undefined") {
-//   initialState.products = JSON.parse(localStorage.getItem("cart")) || [];
-// }
+if (typeof window !== "undefined") {
+  initialState.products = JSON.parse(localStorage.getItem("cart")) || [];
+}
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -37,12 +37,6 @@ const cartSlice = createSlice({
         return;
       }
       
-
-      // const productExistInCart = state.products.some(
-      //   (product) => product.id === action.payload.id
-      // );
-      
-
       state.products = [ ... state.products, { ...action.payload, quantity: 1}]
       localStorage.setItem("cart", JSON.stringify(state.products));
     },
