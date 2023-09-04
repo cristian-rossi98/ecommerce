@@ -11,8 +11,10 @@ import {
 
 import "./cartProduct.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function CartProduct({ product, cartLenght, index }) {
+  const router = useRouter();
   const { lang } = useSelector((reducer) => reducer.langReducer);
   const title = `${twoWords(product.title[lang], 0, 1)} ${
     twoWords(product.title[lang], 1, 2)
@@ -23,18 +25,21 @@ export default function CartProduct({ product, cartLenght, index }) {
 
   return (
     <li className="w-full mb-16">
-      <div className="flex items-start justify-between w-full">
+      <div
+        className="flex items-start justify-between w-full"
+        onClick={() => router.push(`/product?info=${product.id}`)}
+      >
         <img
-          className="product-image-cart mr-4"
+          className="product-image-cart mr-4 cursor-pointer"
           src={product.image}
           alt={product.title[lang]}
           rel="preload"
           loading="lazy"
         />
-        <h1 className="w-full text-base font-semibold text-black lg:text-2xl lg:font-bold">
+        <h1 className="w-full text-base font-semibold text-black cursor-pointer lg:text-2xl lg:font-bold">
           {title}
         </h1>
-        <p className="w-full text-sm font-normal text-neutral-700 bg-neutral-50 text-end lg:text-lg lg:font-medium">
+        <p className="w-full text-sm font-normal text-neutral-700 bg-neutral-50 text-end cursor-pointer lg:text-lg lg:font-medium">
           {languages.product.price[lang]} {product.price[lang]}
         </p>
       </div>

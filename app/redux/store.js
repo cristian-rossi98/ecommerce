@@ -11,7 +11,7 @@ const store = configureStore({
     userReducer,
     langReducer,
   },
-  middleware: [logger],
+  // middleware: [logger],
 })
 
 export default store;
