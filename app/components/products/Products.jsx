@@ -12,13 +12,13 @@ export default function Products({ products }) {
 
   const colors = {
     men: ["rgb(212 212 212)"],
-    jewelery: ["rgb(15 23 42)"],
+    jewelery: ["rgb(10 10 10)"],
     women: ["rgb(244 244 244)"],
   };
 
   const backgrounds = {
     men: ["rgb(212, 212, 212, 0.9)"],
-    jewelery: ["rgb(15, 23, 42, 0.99)"],
+    jewelery: ["rgb(10, 10, 10, 0.995)"],
     women: ["rgb(244 244 244)"],
   };
 
@@ -68,7 +68,7 @@ export default function Products({ products }) {
           {renderFeaturedProducts("men")}
         </ul>
         <ul className="flex justify-center flex-wrap">
-          <li className="bg-black px-8 lg:px-16 lg:py-16 pb-16 pt-8 lg:flex lg:flex-row">
+          <li className="bg-neutral-950 px-8 lg:px-16 lg:py-16 pb-16 pt-8 lg:flex lg:flex-row">
             <h1 className="text-xl font-bold mb-8 lg:hidden">
               {languages.home.release.title[lang]}
             </h1>

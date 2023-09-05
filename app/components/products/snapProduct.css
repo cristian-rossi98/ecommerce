@@ -20,7 +20,7 @@
   display: flex;
   animation: scroll 30s linear infinite; 
   white-space: nowrap; 
-  width: 3500px;
+  width: 2500px;
 }
 
 .carousel-container {
