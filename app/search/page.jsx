@@ -15,14 +15,18 @@ export default function Search() {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams().get("search");
-  const [cart, setCart] = useState([]);
   const [orderProduct, setOrderProduct] = useState(0);
   const { lang } = useSelector((reducer) => reducer.langReducer);
-  const filteredProducts = product.filter(
-    (product) =>
-      product.title[lang].toLowerCase().indexOf(searchParams.toLowerCase()) !==
-      -1
+  const filteredProducts = product.filter((product) =>
+    searchParams === "electronics"
+      ? product.category.toLowerCase().indexOf(searchParams.toLowerCase()) !==
+        -1
+      : product.title[lang]
+          .toLowerCase()
+          .indexOf(searchParams.toLowerCase()) !== -1
   );
+
+  console.log(searchParams);
 
   useEffect(() => {
     fetch(`https://json-server-rose-one.vercel.app/products/`)
@@ -75,20 +79,28 @@ export default function Search() {
   return (
     <>
       <section className="m-auto ">
-        <div className="flex justify-between items-center px-8">
-          <h1 className="text-black text-xl overflow-hidden text-ellipsis">
-            {languages.search.header.showing[lang]} {sortedProducts.length}
-            {sortedProducts.length > 1 ? (
-              <span> {languages.search.header.results.plural[lang]} </span>
-            ) : (
-              <span> {languages.search.header.results.singular[lang]} </span>
-            )}
-            <span> "</span>
-            <span className="font-semibold">{searchParams}</span>
-            <span>"</span>
-          </h1>
-        </div>
-        <div className="border-t-2 border-neutral-200 mt-4 mb-12 mx-8"></div>
+        {searchParams !== "electronics" && (
+          <>
+            <div className="flex justify-between items-center px-8">
+              <h1 className="text-black text-xl overflow-hidden text-ellipsis">
+                {languages.search.header.showing[lang]} {sortedProducts.length}
+                {sortedProducts.length > 1 ? (
+                  <span> {languages.search.header.results.plural[lang]} </span>
+                ) : (
+                  <span>
+                    {" "}
+                    {languages.search.header.results.singular[lang]}{" "}
+                  </span>
+                )}
+                <span> "</span>
+                <span className="font-semibold">{searchParams}</span>
+                <span>"</span>
+              </h1>
+            </div>
+            <div className="border-t-2 border-neutral-200 mt-4 mb-12 mx-8"></div>
+          </>
+        )}
+
         {sortedProducts.length ? (
           <div className="flex flex-col lg:flex-row">
             <div className="lg:w-2/12 px-8">

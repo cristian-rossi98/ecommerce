@@ -6,9 +6,11 @@ import "./snapProduct.css";
 
 import languages from "../../languages/languages.json";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
 export default function Products({ products }) {
   const { lang } = useSelector((reducer) => reducer.langReducer);
+  const router = useRouter();
 
   const colors = {
     men: ["rgb(212 212 212)"],
@@ -61,6 +63,10 @@ export default function Products({ products }) {
     ));
   };
 
+  const handleReleaseClick = () => {
+    router.push(`/search?search=electronics`);
+  };
+
   return (
     <>
       <div className="w-full flex justify-center flex-col">
@@ -76,16 +82,22 @@ export default function Products({ products }) {
               <h1 className="text-xl lg:text-5xl font-bold lg:mb-0">
                 {languages.home.release.title[lang]}
               </h1>
-              <p className="bg-neutral-100 mt-4 py-2 px-4 text-neutral-800 font-extrabold text-lg rounded-sm inline-block">
+              <button
+                onClick={handleReleaseClick}
+                className="bg-neutral-100 mt-4 py-2 px-4 text-neutral-800 font-extrabold text-lg rounded-sm inline-block border-2 border-neutral-100 hover:bg-neutral-950 hover:text-neutral-100"
+              >
                 {languages.home.release.soon[lang]}
-              </p>
+              </button>
             </div>
             <p className="text-justify lg:text-xl">
               {languages.home.release.paragraph[lang]}
             </p>
-            <p className="bg-neutral-100 mt-4 py-2 px-4 text-neutral-800 font-extrabold text-lg rounded-sm inline-block lg:hidden">
+            <button
+              onClick={handleReleaseClick}
+              className="bg-neutral-100 mt-4 py-2 px-4 text-neutral-800 font-extrabold text-lg rounded-sm inline-block lg:hidden border-2 border-neutral-100 hover:bg-neutral-950 hover:text-neutral-100"
+            >
               {languages.home.release.soon[lang]}
-            </p>
+            </button>
           </li>
         </ul>
         <ul className="flex justify-center flex-wrap lg:justify-start">
@@ -98,13 +110,13 @@ export default function Products({ products }) {
             ))}
           </div>
         </section> */}
-        <section className="carousel-container py-12 bg-neutral-950 w-full">
+        {/* <section className="carousel-container py-12 bg-neutral-950 w-full">
           <div className="carousel">
             {snapProductsElectronics.map((product) => (
               <SnapProduct key={product.id} product={product} />
             ))}
           </div>
-        </section>
+        </section> */}
         <ul className="flex justify-center flex-wrap p-4 lg:justify-start">
           {featuredProductsWomen.map((product, index) => (
             <div className="px-8 py-4 w-full lg:w-1/2 xl:w-1/4 lg:px-4 lg:py-4">
